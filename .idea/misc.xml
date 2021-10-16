@@ -61,6 +61,7 @@
         <entry key="app/src/main/res/layout/fragment_pronunciation_main.xml" value="0.16639685084902806" />
         <entry key="app/src/main/res/layout/fragment_vocabulary_menu.xml" value="0.2015625" />
         <entry key="app/src/main/res/layout/fragment_vocabulary_phrases.xml" value="0.22192028985507245" />
+        <entry key="app/src/main/res/layout/fragment_vocabulary_phrases_translation.xml" value="0.1875" />
         <entry key="app/src/main/res/layout/fragment_vocabulary_words.xml" value="0.22192028985507245" />
         <entry key="app/src/main/res/layout/fragment_vocabulary_words_translation.xml" value="0.3146046200966479" />
         <entry key="app/src/main/res/layout/game_complete_dialog.xml" value="0.2576609865568536" />

@@ -26,6 +26,11 @@ public class VocabularyViewModel extends AndroidViewModel {
 
     }
 
+    public void setCategory(int category){
+        helper.setCategory(category);
+
+    }
+
     public LiveData<List<AppDataEntity>> getLiveItems(){
         return helper.getObservableItems();
     }

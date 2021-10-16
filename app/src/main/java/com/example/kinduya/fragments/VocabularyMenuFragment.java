@@ -41,7 +41,7 @@ public class VocabularyMenuFragment extends Fragment {
         phrases = v.findViewById(R.id.phrases);
 
         Glide.with(this).load(getImage("words")).into(words);
-        Glide.with(this).load(getImage("phrases")).into(phrases);
+        Glide.with(this).load(getImage("phrases1")).into(phrases);
         back.setOnClickListener(view -> back());
         words.setOnClickListener(view -> {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();

@@ -95,8 +95,9 @@ public class VocabularyWordsFragment extends Fragment implements VocabularyMainA
             vocabularyViewModel.setSearchQuery("%%");
         }
 
-        adapter = new VocabularyMainAdapter(this);
+        adapter = new VocabularyMainAdapter(this, 5);
         rvVocabularyWords.setAdapter(adapter);
+        vocabularyViewModel.setCategory(5);
         vocabularyViewModel.getLiveItems().observe(getViewLifecycleOwner(), appDataEntities -> {
             adapter.submitList(appDataEntities);
             rvVocabularyWords.scrollToPosition(position);

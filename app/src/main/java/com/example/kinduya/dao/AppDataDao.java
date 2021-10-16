@@ -29,6 +29,7 @@ public interface AppDataDao {
     // BODYPARTS 3
     // NUMBERS 4
     // VOCABULARY 5
+    // PHRASES 6
     @Query("INSERT OR REPLACE INTO app_data (mandaya, english, category, image, english_phrase, mandaya_phrase) " +
             " VALUES " +
             "('GETLO', 'TRIANGLE', 1, 'triangle', 'The roof is triangular shape', 'Yang bayho sang hanog kay getlo.')," +
@@ -135,7 +136,33 @@ public interface AppDataDao {
             "('Pali', 'Wound', 5, '', '', ''), " +
             "('Gaintawnun', 'Diarrhea', 5, '', '', ''), " +
             "('Msaskit ya unto', 'Toothache', 5, '', '', ''), " +
-            "('Bugas sa guya', 'Pimples', 5, '', '', '')"
+            "('Bugas sa guya', 'Pimples', 5, '', '', '')," +
+            // PHRASES
+            "('', '', 6, '', 'Who is with you?', 'Sinu ya upud mo?')," +
+            "('', '', 6, '', 'What is his name?', 'Sinu ya an nan?')," +
+            "('', '', 6, '', 'I don’t remember', 'Waa ma kadumdudom')," +
+            "('', '', 6, '', 'What is the matter with you?', 'Ima kuno kaw?')," +
+            "('', '', 6, '', 'How is your child?', 'Kumusta ya isu mo?')," +
+            "('', '', 6, '', 'What are you doing?', 'Uno ya gawbuli mo?')," +
+            "('', '', 6, '', 'What are you cooking?', 'Uno ya iluto mo?')," +
+            "('', '', 6, '', 'I’m just cooking ampalaya with eggs', 'Migaluto a ng paliya gisagulan og ikug')," +
+            "('', '', 6, '', 'If you would like, we can get some after a while', 'Kung gusto kaw, kumamang lang kita kagaya')," +
+            "('', '', 6, '', 'Yes, after we finish breakfast', 'Uu, kagaya pagkatapos nami mamahaw')," +
+            "('', '', 6, '', 'Then, shall we go?', 'Adun, unda kita manaw?')," +
+            "('', '', 6, '', 'What will you drink?', 'Uno yan kanmu inumun?')," +
+            "('', '', 6, '', 'Do you drink in coffee?', 'Un kaw minum ng kape?')," +
+            "('', '', 6, '', 'Yes, I’ll just wait', 'U,ako lang magtagad')," +
+            "('', '', 6, '', 'Yes, let’s go so we can return soon, because we have somewhere else to go', 'U, unda kita manaw antak makabalik kita dayun kay awn pay adtuan ta')," +
+            "('', '', 6, '', 'You really know how to cook', 'Madi yaw kaw magluto')," +
+            "('', '', 6, '', 'What time does the meeting start?', 'Uno urasa magsugod ya miting?')," +
+            "('', '', 6, '', 'What to say people you meet?', 'Ya ikalawong mu sab ago na ataw nabago no ikila?')," +
+            "('', '', 6, '', 'Where you from originally?', 'Taga ayn kaw kadi?')," +
+            "('', '', 6, '', 'What is your name?', 'Sino ya an mu?')," +
+            "('', '', 6, '', 'What should I call you?', 'Uno ya tawag ka kanmu?')," +
+            "('', '', 6, '', 'I’ll be going home now', 'Un an ka muli')," +
+            "('', '', 6, '', 'Yes, I’ll certainly comeback', 'Ako gayd tumangag')," +
+            "('', '', 6, '', 'What can I do for you?', 'Unu yan ikabulig ko kanmu?')," +
+            "('', '', 6, '', 'Where did you just come from?', 'Ayn kaw sikun adun?')"
 
     )
     void insert();
@@ -146,7 +173,8 @@ public interface AppDataDao {
     @Query("SELECT * FROM app_data WHERE category = :category")
     List<AppDataEntity> getData(int category);
 
-    @Query("SELECT * FROM app_data WHERE category = :category AND english LIKE :searchQuery")
+    @Query("SELECT * FROM app_data  WHERE category = :category AND " +
+            "(CASE WHEN :category = 5 THEN english LIKE :searchQuery ELSE english_phrase LIKE :searchQuery END)")
     LiveData<List<AppDataEntity>> getLiveData(int category, String searchQuery);
 
     @Query("SELECT * FROM app_data WHERE id = :id")

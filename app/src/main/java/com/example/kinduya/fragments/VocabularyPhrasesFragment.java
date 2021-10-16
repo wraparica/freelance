@@ -1,49 +1,61 @@
 package com.example.kinduya.fragments;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.example.kinduya.R;
+import com.example.kinduya.adapter.PronunciationMainAdapter;
+import com.example.kinduya.adapter.VocabularyMainAdapter;
+import com.example.kinduya.datalayer.KinduyaDatabase;
+import com.example.kinduya.entities.AppDataEntity;
+import com.example.kinduya.viewmodel.VocabularyViewModel;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link VocabularyPhrasesFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class VocabularyPhrasesFragment extends Fragment {
+import java.util.List;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+public class VocabularyPhrasesFragment extends Fragment implements VocabularyMainAdapter.ItemOnClickListener {
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
-    public VocabularyPhrasesFragment() {
-        // Required empty public constructor
-    }
+    private static final String ARG_ID = "id";
+    private static final String ARG_CATEGORY = "category";
+    private static final String ARG_POSITION = "position";
+    private static final String ARG_SEARCH_QUERY = "search";
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment VocabularyPhrasesFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static VocabularyPhrasesFragment newInstance(String param1, String param2) {
+
+    KinduyaDatabase kinduyaDatabase;
+    RecyclerView rvVocabularyPhrases;
+    VocabularyMainAdapter adapter;
+    LiveData<List<AppDataEntity>> data;
+    ImageView back;
+    int category, position;
+    VocabularyViewModel vocabularyViewModel;
+    SearchView searchView;
+    String searchQuery, searchQueryParams = "";
+
+    public static VocabularyPhrasesFragment newInstance(int category, int position, String searchQueryParams) {
         VocabularyPhrasesFragment fragment = new VocabularyPhrasesFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putInt(ARG_CATEGORY, category);
+        args.putInt(ARG_POSITION, position);
+        args.putString(ARG_SEARCH_QUERY, searchQueryParams);
         fragment.setArguments(args);
         return fragment;
     }
@@ -52,8 +64,9 @@ public class VocabularyPhrasesFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            category = getArguments().getInt(ARG_CATEGORY);
+            position = getArguments().getInt(ARG_POSITION);
+            searchQueryParams = getArguments().getString(ARG_SEARCH_QUERY);
         }
     }
 
@@ -62,5 +75,77 @@ public class VocabularyPhrasesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_vocabulary_phrases, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View v, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(v, savedInstanceState);
+
+        rvVocabularyPhrases = v.findViewById(R.id.rvVocabularyPhrases);
+        kinduyaDatabase = KinduyaDatabase.getInstance(requireContext());
+        vocabularyViewModel = new ViewModelProvider(this).get(VocabularyViewModel.class);
+        searchView = v.findViewById(R.id.searchView);
+        searchView.setIconifiedByDefault(false);
+        setupSearch();
+        if (searchQueryParams != null && !searchQueryParams.equals("")) {
+            searchView.setQuery(searchQueryParams, false);
+
+            vocabularyViewModel.setSearchQuery("%" + searchQueryParams + "%");
+        } else {
+            vocabularyViewModel.setSearchQuery("%%");
+        }
+
+        adapter = new VocabularyMainAdapter(this, 6);
+        rvVocabularyPhrases.setAdapter(adapter);
+        vocabularyViewModel.setCategory(6);
+        vocabularyViewModel.getLiveItems().observe(getViewLifecycleOwner(), appDataEntities -> {
+            adapter.submitList(appDataEntities);
+            rvVocabularyPhrases.scrollToPosition(position);
+        });
+
+        back = v.findViewById(R.id.back);
+        back.setOnClickListener(view -> back());
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    private void setupSearch(){
+        SearchManager searchManager = (SearchManager) requireActivity().getSystemService(Context.SEARCH_SERVICE);
+        if (searchManager != null){
+            searchView.setSearchableInfo(searchManager.getSearchableInfo(requireActivity().getComponentName()));
+        }
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchQuery = newText;
+                vocabularyViewModel.setSearchQuery("%" + newText + "%");
+                return true;
+            }
+        });
+    }
+
+    private void back(){
+        FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.from_left,
+                R.anim.to_right, R.anim.from_right, R.anim.to_left);
+        fragmentTransaction.replace(R.id.frameLayout, new VocabularyMenuFragment()).commit();
+    }
+
+    @Override
+    public void onItemClicked(AppDataEntity appDataEntity, int position) {
+        FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.from_right,
+                R.anim.to_left, R.anim.from_left, R.anim.to_right);
+        fragmentTransaction.replace(R.id.frameLayout,
+                VocabularyPhrasesTranslationFragment.newInstance(appDataEntity.getId(), category, position, searchQuery)).commit();
     }
 }

@@ -16,6 +16,7 @@ public class VocabularyWordHelper {
 
     private KinduyaDatabase db;
     private MutableLiveData<String> searchQuery = new MutableLiveData<>();
+    private MutableLiveData<Integer> category = new MutableLiveData<>();
     private MediatorLiveData<List<AppDataEntity>> items = new MediatorLiveData<>();
     private LiveData<List<AppDataEntity>> liveData;
 
@@ -24,12 +25,24 @@ public class VocabularyWordHelper {
         this.items.addSource(searchQuery, i-> {
             refreshList();
         });
+        this.items.addSource(category, i-> {
+            refreshList();
+        });
     }
     public void refreshList(){
         this.items.removeSource(liveData);
-        this.liveData = db.appDataDao().getLiveData(5, getSearchQuery());
+        this.liveData = db.appDataDao().getLiveData(getCategory(), getSearchQuery());
 
         this.items.addSource(liveData, list -> items.postValue(list));
+    }
+
+    public int getCategory(){
+        Integer result = this.category.getValue();
+        return result == null ? 5 : result;
+    }
+
+    public void setCategory(int category){
+        this.category.postValue(category);
     }
 
     public String getSearchQuery(){
