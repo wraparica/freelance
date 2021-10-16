@@ -40,9 +40,22 @@ public class VocabularyMenuFragment extends Fragment {
         words = v.findViewById(R.id.words);
         phrases = v.findViewById(R.id.phrases);
 
-        Glide.with(this).load(getImage("start")).into(words);
-        Glide.with(this).load(getImage("highscore")).into(phrases);
+        Glide.with(this).load(getImage("words")).into(words);
+        Glide.with(this).load(getImage("phrases")).into(phrases);
         back.setOnClickListener(view -> back());
+        words.setOnClickListener(view -> {
+            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.from_right,
+                    R.anim.to_left, R.anim.from_left, R.anim.to_right);
+            fragmentTransaction.replace(R.id.frameLayout, VocabularyWordsFragment.newInstance(5, 0, null)).commit();
+        });
+
+        phrases.setOnClickListener(view -> {
+            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.from_right,
+                    R.anim.to_left, R.anim.from_left, R.anim.to_right);
+            fragmentTransaction.replace(R.id.frameLayout, new VocabularyPhrasesFragment()).commit();
+        });
     }
 
     public int getImage(String imageName) {

@@ -28,6 +28,7 @@ public interface AppDataDao {
     // COLORS 2
     // BODYPARTS 3
     // NUMBERS 4
+    // VOCABULARY 5
     @Query("INSERT OR REPLACE INTO app_data (mandaya, english, category, image, english_phrase, mandaya_phrase) " +
             " VALUES " +
             "('GETLO', 'TRIANGLE', 1, 'triangle', 'The roof is triangular shape', 'Yang bayho sang hanog kay getlo.')," +
@@ -93,7 +94,50 @@ public interface AppDataDao {
             "('SETE', 'SEVEN', 4, 'seven', 'We ate breakfast aa seven.', 'Mo kaan kami ng pamahaw alas sete sangbuntag.')," +
             "('WAW', 'EIGHT', 4, 'eight', 'Neptune is the eighth planet of the solar system', 'Yang Neptune ika waw sang planeta ng solar system.')," +
             "('NOYBE', 'NINE', 4, 'nine', 'School starts at nine', 'Maga sugod yang klase kay alas noybe sa buntag.')," +
-            "('NAPO', 'TEN', 4, 'ten', 'My grandfather has ten cows', 'Yang umpo ko awon napo ka baka.')")
+            "('NAPO', 'TEN', 4, 'ten', 'My grandfather has ten cows', 'Yang umpo ko awon napo ka baka.'), " +
+            // VOCABULARY
+            "('Ka banwa', 'Townmate', 5, '', '', ''), " +
+            "('Amigo', 'Friend', 5, '', '', ''), " +
+            "('Kalaban', 'Enemy', 5, '', '', ''), " +
+            "('Utaw', 'Person', 5, '', '', ''), " +
+            "('Usog', 'Male', 5, '', '', ''), " +
+            "('Bubay', 'Female', 5, '', '', ''), " +
+            "('Isu', 'Child', 5, '', '', ''), " +
+            "('Bago na utaw', 'Infant', 5, '', '', ''), " +
+            "('Dalaga', 'Young women', 5, '', '', ''), " +
+            "('Matikadung una', 'Oldman', 5, '', '', ''), " +
+            "('Simbay', 'Neighbor', 5, '', '', ''), " +
+            "('Trato', 'Girlfriend /Boyfriend', 5, '', '', ''), " +
+            "('Magluman', 'Brother /Sister', 5, '', '', ''), " +
+            "('Mangud', 'Younger sibling', 5, '', '', ''), " +
+            "('Kimud', 'Youngest child', 5, '', '', ''), " +
+            "('Panganay', 'Eldest child', 5, '', '', ''), " +
+            "('Ompo', 'Grand parent', 5, '', '', ''), " +
+            "('Ompo na isu', 'Grand child', 5, '', '', ''), " +
+            "('Anakon', 'Nephew /Niece', 5, '', '', ''), " +
+            "('Ugangan', 'Parent in-law', 5, '', '', ''), " +
+            "('Ipag na bubay', 'Sister in-law', 5, '', '', ''), " +
+            "('Layun', 'Relatives', 5, '', '', ''), " +
+            "('Ama', 'Father', 5, '', '', ''), " +
+            "('Ina', 'Mother', 5, '', '', ''), " +
+            "('Tabilay', 'House lizard', 5, '', '', ''), " +
+            "('Kadung', 'Puppy', 5, '', '', ''), " +
+            "('Binaw', 'Deer', 5, '', '', ''), " +
+            "('Mga pag-usip', 'Questions', 5, '', '', ''), " +
+            "('Kanu', 'When', 5, '', '', ''), " +
+            "('Sinu', 'Who', 5, '', '', ''), " +
+            "('Kaninu yan', 'Whose', 5, '', '', ''), " +
+            "('Ayn', 'Where', 5, '', '', ''), " +
+            "('Nanga', 'Why', 5, '', '', ''), " +
+            "('Uno-un', 'How', 5, '', '', ''), " +
+            "('Nanga mayaw', 'Why not', 5, '', '', ''), " +
+            "('Buni', 'Ring worm', 5, '', '', ''), " +
+            "('Pali', 'Wound', 5, '', '', ''), " +
+            "('Gaintawnun', 'Diarrhea', 5, '', '', ''), " +
+            "('Msaskit ya unto', 'Toothache', 5, '', '', ''), " +
+            "('Bugas sa guya', 'Pimples', 5, '', '', '')"
+
+    )
     void insert();
 
     @Query("SELECT * FROM app_data WHERE category = 3")
@@ -101,6 +145,9 @@ public interface AppDataDao {
 
     @Query("SELECT * FROM app_data WHERE category = :category")
     List<AppDataEntity> getData(int category);
+
+    @Query("SELECT * FROM app_data WHERE category = :category AND english LIKE :searchQuery")
+    LiveData<List<AppDataEntity>> getLiveData(int category, String searchQuery);
 
     @Query("SELECT * FROM app_data WHERE id = :id")
     AppDataEntity getAppDataById(long id);
