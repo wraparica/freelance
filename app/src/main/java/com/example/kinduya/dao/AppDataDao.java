@@ -28,8 +28,8 @@ public interface AppDataDao {
     // COLORS 2
     // BODYPARTS 3
     // NUMBERS 4
-    // VOCABULARY 5
-    // PHRASES 6
+    // VOCABULARY WORD 5
+    // VOCABULARY PHRASES 6
     @Query("INSERT OR REPLACE INTO app_data (mandaya, english, category, image, english_phrase, mandaya_phrase) " +
             " VALUES " +
             "('GETLO', 'TRIANGLE', 1, 'triangle', 'The roof is triangular shape', 'Yang bayho sang hanog kay getlo.')," +
