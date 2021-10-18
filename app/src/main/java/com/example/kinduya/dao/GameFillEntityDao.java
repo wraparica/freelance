@@ -42,7 +42,7 @@ public interface GameFillEntityDao {
             "(16,'_UTI','WHITE','P','white','PUTI')," +
 
             "(17,'P_A','RED','U','red','PUA')," +
-            "(18,'_UTI','BLACK','P','red','PUTI')," +
+            "(18,'IT_M','BLACK','U','black','ITUM')," +
             "(19,'ASU_','BLUE','L','blue','ASUL')," +
             "(20,'DALA_','YELLOW','G','yellow','DALAG')," +
             "(21,'DA_ANGHITA','ORANGE','R','orange','DARANGHITA')," +
