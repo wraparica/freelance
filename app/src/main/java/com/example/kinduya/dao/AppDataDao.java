@@ -54,16 +54,16 @@ public interface AppDataDao {
             // BODY PARTS
             "('ILONG', 'NOSE', 3, 'nose_ilong', 'My nose itches', 'Kanak ilong kay katulay')," +
             "('DILA', 'TONGUE', 3, 'tongue_dila', 'I bit my tongue', 'Ya kagat ko kanak dila.')," +
-            "('BAYHO', 'FACE', 3, 'face_bayho', '', '')," +
+            "('BAYHO', 'FACE', 3, 'face_bayho', 'My face shape is look like my mom', 'Kanak bayho amo ng bayho ng kana kina.')," +
             "('SIKI', 'FEET', 3, 'feet_siki', 'Wash your feet', 'Hugasi yang kanmo siki.')," +
-            "('MATA', 'EYES', 3, 'eye_mata', '', '')," +
-            "('UNTO', 'TEETH ', 3, 'teeth_unto', '', '') ," +
+            "('MATA', 'EYES', 3, 'eye_mata', 'The baby has a beautiful eyes', 'Yang isu gandahay Kanaan mata.')," +
+            "('UNTO', 'TEETH ', 3, 'teeth_unto', 'I brush my teeth two times a day', 'Pyaga sipilyohan ko kanak unto duha ka bisis sa usa ka adlwa.') ," +
             "('TUDLO', 'FINGERS ', 3, 'fingers_tudlo', 'He tapped his finger on the pipe', 'Gi sangsangan ng usog yag Kanaan tudlo sang tubo.') ," +
-            "('PAA', 'LEGS', 3, 'legs_paa', '', '')," +
+            "('PAA', 'LEGS', 3, 'legs_paa', 'My skirt won’t fit because my legs is big', 'Kanak saya di mag kasya kay kanak paa dakoay.')," +
             "('BABA', 'MOUTH', 3, 'mouth', 'Her mouth felt dry and her voice was barely a whisper.', 'Yang  kanaan baba ugahay amo yaan yaga  hunghong dalamang')," +
-            "('TUHOD', 'KNEE', 3, 'knee_tuhod', '', '')," +
-            "('KAMOT', 'HAND', 3, 'hand_kamot', '', '')," +
-            "('TALINGA', 'EAR', 3, 'ear_talinga', '', '')," +
+            "('TUHOD', 'KNEE', 3, 'knee_tuhod', 'My Grandmother''s knee is weak', 'Kanak umpo tuhod kay  masakitay kuno.')," +
+            "('KAMOT', 'HAND', 3, 'hand_kamot', 'I always wash my hands every time I eat', 'Pyaga hugasan ko kanank kamot kada mo kaan ako.')," +
+            "('TALINGA', 'EAR', 3, 'ear_talinga', 'My mom told me to clean my ears once a week', 'Si ina ko yaga laom kanak ng hinloan ko kanak talinga kada semana.')," +
             "('LAWAS', 'BODY', 3, 'body_lawas', 'My brother has a strong body', 'Kanak lumon adunay dakoay nga lawas.')," +
             "('TUL-LU', 'ARM', 3, 'arm_tullu', 'My friend pinched me on the arm', 'Kanank amigo e kusi kanak tul-lu.')," +
             "('KILAY', 'EYEBROWS', 3, 'eyebrows_kilay', 'Jessi raised her eyebrows', 'Si Jessi kay yaga tindug yaang kilay.')," +
