@@ -6,6 +6,7 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.1765625" />
         <entry key="app/src/main/res/drawable-v24/back_image.xml" value="0.20260416666666667" />
         <entry key="app/src/main/res/drawable-v24/bg_circle.xml" value="0.3765625" />
+        <entry key="app/src/main/res/drawable-v24/book.xml" value="0.21770833333333334" />
         <entry key="app/src/main/res/drawable-v24/btn_blue_normal.xml" value="0.21770833333333334" />
         <entry key="app/src/main/res/drawable-v24/btn_blue_pressed.xml" value="0.21770833333333334" />
         <entry key="app/src/main/res/drawable-v24/btn_blue_selector.xml" value="0.1703125" />
@@ -57,17 +58,19 @@
         <entry key="app/src/main/res/layout/fragment_highscore.xml" value="0.21" />
         <entry key="app/src/main/res/layout/fragment_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_pronunciation_default.xml" value="0.1752786220871327" />
-        <entry key="app/src/main/res/layout/fragment_pronunciation_default_translation.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_pronunciation_default_translation.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_pronunciation_main.xml" value="0.16639685084902806" />
         <entry key="app/src/main/res/layout/fragment_vocabulary_menu.xml" value="0.2015625" />
         <entry key="app/src/main/res/layout/fragment_vocabulary_phrases.xml" value="0.22192028985507245" />
         <entry key="app/src/main/res/layout/fragment_vocabulary_phrases_translation.xml" value="0.1875" />
         <entry key="app/src/main/res/layout/fragment_vocabulary_words.xml" value="0.22192028985507245" />
+        <entry key="app/src/main/res/layout/fragment_vocabulary_words_menu.xml" value="0.1875" />
         <entry key="app/src/main/res/layout/fragment_vocabulary_words_translation.xml" value="0.3146046200966479" />
         <entry key="app/src/main/res/layout/game_complete_dialog.xml" value="0.2576609865568536" />
         <entry key="app/src/main/res/layout/game_fill_choices.xml" value="0.24728260869565216" />
         <entry key="app/src/main/res/layout/highscore_layout.xml" value="0.2" />
         <entry key="app/src/main/res/layout/vocabulary_layout.xml" value="0.22192028985507245" />
+        <entry key="app/src/main/res/layout/vocabulary_words_menu_layout.xml" value="0.25" />
       </map>
     </option>
   </component>

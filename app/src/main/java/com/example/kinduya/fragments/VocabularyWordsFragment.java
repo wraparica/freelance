@@ -37,6 +37,7 @@ public class VocabularyWordsFragment extends Fragment implements VocabularyMainA
     private static final String ARG_ID = "id";
     private static final String ARG_CATEGORY = "category";
     private static final String ARG_POSITION = "position";
+    private static final String ARG_MAIN_POSITION = "main_position";
     private static final String ARG_SEARCH_QUERY = "search";
 
 
@@ -45,16 +46,17 @@ public class VocabularyWordsFragment extends Fragment implements VocabularyMainA
     VocabularyMainAdapter adapter;
     LiveData<List<AppDataEntity>> data;
     ImageView back;
-    int category, position;
+    int category, position, mainPosition;
     VocabularyViewModel vocabularyViewModel;
     SearchView searchView;
     String searchQuery, searchQueryParams = "";
 
-    public static VocabularyWordsFragment newInstance(int category, int position, String searchQueryParams) {
+    public static VocabularyWordsFragment newInstance(int category, int position,int mainPosition, String searchQueryParams) {
         VocabularyWordsFragment fragment = new VocabularyWordsFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_CATEGORY, category);
         args.putInt(ARG_POSITION, position);
+        args.putInt(ARG_MAIN_POSITION, mainPosition);
         args.putString(ARG_SEARCH_QUERY, searchQueryParams);
         fragment.setArguments(args);
         return fragment;
@@ -66,6 +68,7 @@ public class VocabularyWordsFragment extends Fragment implements VocabularyMainA
         if (getArguments() != null) {
             category = getArguments().getInt(ARG_CATEGORY);
             position = getArguments().getInt(ARG_POSITION);
+            mainPosition = getArguments().getInt(ARG_MAIN_POSITION);
             searchQueryParams = getArguments().getString(ARG_SEARCH_QUERY);
         }
     }
@@ -97,7 +100,7 @@ public class VocabularyWordsFragment extends Fragment implements VocabularyMainA
 
         adapter = new VocabularyMainAdapter(this, 5);
         rvVocabularyWords.setAdapter(adapter);
-        vocabularyViewModel.setCategory(5);
+        vocabularyViewModel.setCategory(category);
         vocabularyViewModel.getLiveItems().observe(getViewLifecycleOwner(), appDataEntities -> {
             adapter.submitList(appDataEntities);
             rvVocabularyWords.scrollToPosition(position);
@@ -137,7 +140,7 @@ public class VocabularyWordsFragment extends Fragment implements VocabularyMainA
         FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.from_left,
                 R.anim.to_right, R.anim.from_right, R.anim.to_left);
-        fragmentTransaction.replace(R.id.frameLayout, new VocabularyMenuFragment()).commit();
+        fragmentTransaction.replace(R.id.frameLayout, VocabularyWordsMenuFragment.newInstance(category, mainPosition, null)).commit();
     }
 
     @Override
@@ -146,6 +149,6 @@ public class VocabularyWordsFragment extends Fragment implements VocabularyMainA
         fragmentTransaction.setCustomAnimations(R.anim.from_right,
                 R.anim.to_left, R.anim.from_left, R.anim.to_right);
         fragmentTransaction.replace(R.id.frameLayout,
-                VocabularyWordsTranslationFragment.newInstance(appDataEntity.getId(), category, position, searchQuery)).commit();
+                VocabularyWordsTranslationFragment.newInstance(appDataEntity.getId(), category, position,mainPosition, searchQuery)).commit();
     }
 }

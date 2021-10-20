@@ -8,11 +8,10 @@
     android:layout_margin="15dp"
     card_view:cardCornerRadius="10dp">
 
-        <com.makeramen.roundedimageview.RoundedImageView
-            android:id="@+id/imgBodyPart"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:layout_alignParentTop="true"
-            app:riv_corner_radius="20dp"
-            tools:src="@drawable/final_logo" />
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/icon"
+        android:layout_width="200dp"
+        android:layout_height="120dp"
+        app:riv_corner_radius="20dp"
+        tools:src="@drawable/feelings" />
 </RelativeLayout>

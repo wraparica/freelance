@@ -24,20 +24,22 @@ public class VocabularyWordsTranslationFragment extends Fragment {
     private static final String ARG_ID = "id";
     private static final String ARG_CATEGORY = "category";
     private static final String ARG_POSITION = "position";
+    private static final String ARG_MAIN_POSITION = "main_position";
     private static final String ARG_SEARCH_QUERY = "search";
     private long id;
-    private int category, position;
+    private int category, position, mainPosition;
     private String searchQueryParams;
     ImageView imageView, back;
     TextInputEditText tvEnglish, tvMandaya;
     KinduyaDatabase kinduyaDatabase;
 
-    public static VocabularyWordsTranslationFragment newInstance(long id, int category, int position, String searchQueryParams) {
+    public static VocabularyWordsTranslationFragment newInstance(long id, int category, int position,int mainPosition, String searchQueryParams) {
         VocabularyWordsTranslationFragment fragment = new VocabularyWordsTranslationFragment();
         Bundle args = new Bundle();
         args.putLong(ARG_ID, id);
         args.putInt(ARG_CATEGORY, category);
         args.putInt(ARG_POSITION, position);
+        args.putInt(ARG_MAIN_POSITION, mainPosition);
         args.putString(ARG_SEARCH_QUERY, searchQueryParams);
         fragment.setArguments(args);
         return fragment;
@@ -50,6 +52,7 @@ public class VocabularyWordsTranslationFragment extends Fragment {
             id = getArguments().getLong(ARG_ID);
             category = getArguments().getInt(ARG_CATEGORY);
             position = getArguments().getInt(ARG_POSITION);
+            mainPosition = getArguments().getInt(ARG_MAIN_POSITION);
             searchQueryParams = getArguments().getString(ARG_SEARCH_QUERY);
         }
     }
@@ -80,7 +83,7 @@ public class VocabularyWordsTranslationFragment extends Fragment {
         FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.from_left,
                 R.anim.to_right, R.anim.from_right, R.anim.to_left);
-        fragmentTransaction.replace(R.id.frameLayout, VocabularyWordsFragment.newInstance(category, position, searchQueryParams)).commit();
+        fragmentTransaction.replace(R.id.frameLayout, VocabularyWordsFragment.newInstance(category, position,mainPosition, searchQueryParams)).commit();
     }
 
     public int getImage(String imageName) {

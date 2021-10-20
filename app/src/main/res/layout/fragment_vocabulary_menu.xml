@@ -52,22 +52,24 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_gravity="center"
             android:weightSum="2"
             >
 
             <ImageView
                 android:id="@+id/words"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="120dp"
                 android:layout_weight="1"
-                android:layout_margin="10dp"
+                android:layout_gravity="center"
                 tools:src="@drawable/start" />
 
             <ImageView
                 android:id="@+id/phrases"
                 android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_height="120dp"
                 android:layout_weight="1"
+                android:layout_gravity="center"
                 android:layout_margin="10dp"
                 tools:src="@drawable/highscore" />
 

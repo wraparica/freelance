@@ -30,6 +30,21 @@ public interface AppDataDao {
     // NUMBERS 4
     // VOCABULARY WORD 5
     // VOCABULARY PHRASES 6
+
+    // CATEGORIES
+    // FAMILY 10
+    // GENDER 11
+    // PERSON 12
+    // RELATIONSHIP 13
+    // ANIMALS 14
+    // Question 15
+    // Emotion 16
+    // Feeling 17
+    // Beverage 18
+    // Illness 19
+    // Food 20
+    // Vegetable 21
+    // Insects 22
     @Query("INSERT OR REPLACE INTO app_data (mandaya, english, category, image, english_phrase, mandaya_phrase) " +
             " VALUES " +
             "('GETLO', 'TRIANGLE', 1, 'triangle', 'The roof is triangular shape', 'Yang bayho sang hanog kay getlo.')," +
@@ -97,72 +112,197 @@ public interface AppDataDao {
             "('NOYBE', 'NINE', 4, 'nine', 'School starts at nine', 'Maga sugod yang klase kay alas noybe sa buntag.')," +
             "('NAPO', 'TEN', 4, 'ten', 'My grandfather has ten cows', 'Yang umpo ko awon napo ka baka.'), " +
             // VOCABULARY
-            "('Ka banwa', 'Townmate', 5, '', '', ''), " +
-            "('Amigo', 'Friend', 5, '', '', ''), " +
-            "('Kalaban', 'Enemy', 5, '', '', ''), " +
+            "('Ka banwa', 'Townmate', 13, '', '', ''), " +
+            "('Amigo', 'Friend', 13, '', '', ''), " +
+            "('Kalaban', 'Enemy', 13, '', '', ''), " +
             "('Utaw', 'Person', 5, '', '', ''), " +
-            "('Usog', 'Male', 5, '', '', ''), " +
-            "('Bubay', 'Female', 5, '', '', ''), " +
-            "('Isu', 'Child', 5, '', '', ''), " +
-            "('Bago na utaw', 'Infant', 5, '', '', ''), " +
-            "('Dalaga', 'Young women', 5, '', '', ''), " +
-            "('Matikadung una', 'Oldman', 5, '', '', ''), " +
-            "('Simbay', 'Neighbor', 5, '', '', ''), " +
-            "('Trato', 'Girlfriend /Boyfriend', 5, '', '', ''), " +
+            "('Usog', 'Male', 11, '', '', ''), " +
+            "('Bubay', 'Female', 11, '', '', ''), " +
+            "('Isu', 'Child', 12, '', '', ''), " +
+            "('Bago na utaw', 'Infant', 12, '', '', ''), " +
+            "('Dalaga', 'Young women', 12, '', '', ''), " +
+            "('Matikadung una', 'Oldman', 12, '', '', ''), " +
+            "('BUYAG', 'Oldwoman', 12, '', '', ''), " +
+            "('Simbay', 'Neighbor', 13, '', '', ''), " +
+            "('Trato', 'Girlfriend /Boyfriend', 13, '', '', ''), " +
             "('Magluman', 'Brother /Sister', 5, '', '', ''), " +
-            "('Mangud', 'Younger sibling', 5, '', '', ''), " +
-            "('Kimud', 'Youngest child', 5, '', '', ''), " +
-            "('Panganay', 'Eldest child', 5, '', '', ''), " +
-            "('Ompo', 'Grand parent', 5, '', '', ''), " +
-            "('Ompo na isu', 'Grand child', 5, '', '', ''), " +
-            "('Anakon', 'Nephew /Niece', 5, '', '', ''), " +
-            "('Ugangan', 'Parent in-law', 5, '', '', ''), " +
-            "('Ipag na bubay', 'Sister in-law', 5, '', '', ''), " +
-            "('Layun', 'Relatives', 5, '', '', ''), " +
-            "('Ama', 'Father', 5, '', '', ''), " +
-            "('Ina', 'Mother', 5, '', '', ''), " +
-            "('Tabilay', 'House lizard', 5, '', '', ''), " +
-            "('Kadung', 'Puppy', 5, '', '', ''), " +
-            "('Binaw', 'Deer', 5, '', '', ''), " +
+            "('Mangud', 'Younger sibling', 10, '', '', ''), " +
+            "('Kimud', 'Youngest child', 10, '', '', ''), " +
+            "('Panganay', 'Eldest child', 10, '', '', ''), " +
+            "('Ompo', 'Grand parent', 10, '', '', ''), " +
+            "('Ompo na isu', 'Grand child', 10, '', '', ''), " +
+            "('Anakon', 'Nephew /Niece', 10, '', '', ''), " +
+            "('Ugangan', 'Parent in-law', 10, '', '', ''), " +
+            "('Ipag na bubay', 'Sister in-law', 10, '', '', ''), " +
+            "('Layun', 'Relatives', 10, '', '', ''), " +
+            "('Ama', 'Father', 10, '', '', ''), " +
+            "('Ina', 'Mother', 10, '', '', ''), " +
+            "('Tabilay', 'House lizard', 14, '', '', ''), " +
+            "('Kadung', 'Puppy', 14, '', '', ''), " +
+            "('Binaw', 'Deer', 14, '', '', ''), " +
+            "('isda', 'fish', 14, '', '', ''), " +
+            "('Barilis', 'Yellow tuna', 14, '', '', ''), " +
+            "('Wabang', 'Small Shrimp', 14, '', '', ''), " +
+            "('Bangus', 'Milk Fish', 14, '', '', ''), " +
+            "('Bulinaw', 'Anchovy', 14, '', '', ''), " +
+            "('Bitabita', 'Tadpole', 14, '', '', ''), " +
+            "('Ihu', 'Shark', 14, '', '', ''), " +
+            "('Aw-wan', 'Mudfish', 14, '', '', ''), " +
+            "('Agila', 'Eagle', 14, '', '', ''), " +
+            "('Oloko', 'Owl', 14, '', '', ''), " +
+            "('Almukon', 'Dove', 14, '', '', ''), " +
+            "('Tamsi', 'Sunbird', 14, '', '', ''), " +
+            "('Kalapati', 'Pigeon', 14, '', '', ''), " +
+            "('Idu', 'Dog', 14, '', '', ''), " +
+            "('Ambaw', 'Mouse', 14, '', '', ''), " +
+            "('Baboy', 'Pig', 14, '', '', ''), " +
+            "('Kadlaganon', 'Wild Pig', 14, '', '', ''), " +
+            "('Baka', 'Cow', 14, '', '', ''), " +
+            "('Buwaya', 'Crocodile', 14, '', '', ''), " +
+            "('Gansa', 'Goose', 14, '', '', ''), " +
+            "('Nati', 'Calf', 14, '', '', ''), " +
+            "('Kwaknit', 'Small Bat', 14, '', '', ''), " +
+            "('Lumangsad', 'Rooster', 14, '', '', ''), " +
+            "('Amo', 'Monkey', 14, '', '', ''), " +
+            "('Pato', 'Duck', 14, '', '', ''), " +
+            "('Unsuy', 'Chick', 14, '', '', ''), " +
+            "('Tuko', 'Gecko', 14, '', '', ''), " +
+            "('Miyaw', 'Cat', 14, '', '', ''), " +
+            "('Eel', 'Kasili', 14, '', '', ''), " +
+            "('Frog', 'Ambak', 14, '', '', ''), " +
+            "('Birds', 'Langgam', 14, '', '', ''), " +
+            "('Grasshopper', 'Pispis', 14, '', '', ''), " +
+            "('Hen', 'Manggianak', 14, '', '', ''), " +
+            "('Iguana', 'Ibid', 14, '', '', ''), " +
+            "('Kitten', 'Kuku', 14, '', '', ''), " +
+            "('Lamb', 'Karnero', 14, '', '', ''), " +
+            "('Octopus', 'Kugita', 14, '', '', ''), " +
+            "('Parrot', 'Pikoy', 14, '', '', ''), " +
+            "('Quail', 'Pitpitaw', 14, '', '', ''), " +
+            "('Raven', 'Uwak', 14, '', '', ''), " +
             "('Mga pag-usip', 'Questions', 5, '', '', ''), " +
-            "('Kanu', 'When', 5, '', '', ''), " +
-            "('Sinu', 'Who', 5, '', '', ''), " +
-            "('Kaninu yan', 'Whose', 5, '', '', ''), " +
-            "('Ayn', 'Where', 5, '', '', ''), " +
-            "('Nanga', 'Why', 5, '', '', ''), " +
-            "('Uno-un', 'How', 5, '', '', ''), " +
-            "('Nanga mayaw', 'Why not', 5, '', '', ''), " +
-            "('Buni', 'Ring worm', 5, '', '', ''), " +
-            "('Pali', 'Wound', 5, '', '', ''), " +
-            "('Gaintawnun', 'Diarrhea', 5, '', '', ''), " +
-            "('Msaskit ya unto', 'Toothache', 5, '', '', ''), " +
-            "('Bugas sa guya', 'Pimples', 5, '', '', '')," +
+            "('Kanu', 'When', 15, '', '', ''), " +
+            "('Sinu', 'Who', 15, '', '', ''), " +
+            "('Kaninu yan', 'Whose', 15, '', '', ''), " +
+            "('Ayn', 'Where', 15, '', '', ''), " +
+            "('Nanga', 'Why', 15, '', '', ''), " +
+            "('Uno-un', 'How', 15, '', '', ''), " +
+            "('Uno-un', 'How', 15, '', '', ''), " +
+            "('Uno yani', 'What is this', 15, '', '', ''), " +
+            "('Nanga mayaw', 'Why not', 15, '', '', ''), " +
+            // Emotion
+            "('Masulub-on', 'Sad', 16, '', '', ''), " +
+            "('Kaawan anan', 'Worries', 16, '', '', ''), " +
+            "('Imol luk', 'Fear', 16, '', '', ''), " +
+            "('Kalipay', 'Happiness', 16, '', '', ''), " +
+            "('Migodaman', 'Anger', 16, '', '', ''), " +
+            "('Imawili', 'Distress', 16, '', '', ''), " +
+            "('Nahimuut', 'Relieve', 16, '', '', ''), " +
+            "('Imasilu', 'Depressed', 16, '', '', ''), " +
+            "('Impituan', 'Disappointed', 16, '', '', ''), " +
+            "('Gugma', 'Love', 16, '', '', ''), " +
+            "('Pandamay', 'Jealous', 16, '', '', ''), " +
+            // Feelings
+            "('Maalipudung', 'Sleepy', 17, '', '', ''), " +
+            "('Makatu', 'Itchy', 17, '', '', ''), " +
+            "('Ikasakiatan', 'Painful', 17, '', '', ''), " +
+            "('Ikapasuan', 'Hot', 17, '', '', ''), " +
+            "('Imangga', 'Thirsty', 17, '', '', ''), " +
+            "('Kusugan', 'Strong', 17, '', '', ''), " +
+            // Beverage
+            "('Gatas', 'Milk', 18, '', '', ''), " +
+            "('Kape', 'Coffee', 18, '', '', ''), " +
+            "('Kuk', 'Coca-cola', 18, '', '', ''), " +
+            "('Dugan ng prutas', 'Fruit juice', 18, '', '', ''), " +
+            "('Tubig', 'Water', 18, '', '', ''), " +
+            // Illness
+            "('Buni', 'Ring worm', 19, '', '', ''), " +
+            "('Pali', 'Wound', 19, '', '', ''), " +
+            "('Gaintawnun', 'Diarrhea', 19, '', '', ''), " +
+            "('Msaskit ya unto', 'Toothache', 19, '', '', ''), " +
+            "('Bugas sa guya', 'Pimples', 19, '', '', '')," +
+            // Food
+            "('Meat', 'Karne', 20, '', '', ''), " +
+            "('Rice grain', 'Umay', 20, '', '', ''), " +
+            "('Chocolate', 'Tabliya', 20, '', '', ''), " +
+            "('Dried fish', 'Payad', 20, '', '', ''), " +
+            // Vegetable
+            "('Ginger', 'Luya', 21, '', '', ''), " +
+            "('Corn', 'Batad', 21, '', '', ''), " +
+            "('Garlic', 'Ahos', 21, '', '', ''), " +
+            "('Taro', 'Lutya', 21, '', '', ''), " +
+            "('Tomato', 'Kamatis', 21, '', '', ''), " +
+            "('Cabbage', 'Repolyo', 21, '', '', ''), " +
+            "('Eggplant', 'Tawung', 21, '', '', ''), " +
+            "('Cassava', 'Balanghoy', 21, '', '', ''), " +
+            "('Pepper', 'Katumba', 21, '', '', ''), " +
+            "('Mushroom', 'Kawpas', 21, '', '', ''), " +
+            "('Peanut', 'Mani', 21, '', '', ''), " +
+            "('Ampalaya', 'Palya', 21, '', '', ''), " +
+            "('Petchay', 'Pitsay', 21, '', '', ''), " +
+            "('Yellow squash', 'Kawbasa', 21, '', '', ''), " +
+            // Insect
+            "('Spider', 'Lawalawa', 22, '', '', ''), " +
+            "('Firefly', 'Aninipot', 22, '', '', ''), " +
+            "('Cockroach', 'Uk-uk', 22, '', '', ''), " +
+            "('Butterfly', 'Alibangbang', 22, '', '', ''), " +
+            "('Cricket', 'Gangis', 22, '', '', ''), " +
+            "('Lice', 'Kusipad', 22, '', '', ''), " +
+            "('Fly', 'Langaw', 22, '', '', ''), " +
+            "('Honeybee', 'Putyukan', 22, '', '', ''), " +
+            "('Caterpillar', 'Antatawo', 22, '', '', ''), " +
+            "('Beetle', 'Bau-bau', 22, '', '', ''), " +
+            "('Mosquito', 'Ilam', 22, '', '', ''), " +
+            "('Dragon fly', 'Tumbak-tumbak', 22, '', '', ''), " +
+            "('Flea', 'Pulgas', 22, '', '', ''), " +
+            "('Ant', 'Alamigas', 22, '', '', ''), " +
+            // Fruits
+            "('Star apple', 'Kaymito', 23, '', '', ''), " +
+            "('Pomelo', 'Boungon', 23, '', '', ''), " +
+            "('Papaya', 'Kapayas', 23, '', '', ''), " +
+            "('Lansones', 'Bugka', 23, '', '', ''), " +
+            "( 'Jackfruit', 'langka', 23, '', '', ''), " +
+            // Day
+            "( 'Sunset', 'Pagsalup ng suga', 24, '', '', ''), " +
+            "( 'Evening', 'Mga kagabi da', 24, '', '', ''), " +
+            "( 'Midnight', 'Maumda ya gabi', 24, '', '', ''), " +
+            "( 'Tonight', 'Adun na gabi', 24, '', '', ''), " +
+            "( 'Yesterday', 'Kagabi', 24, '', '', ''), " +
+            "( 'Last night', 'Yaun na gabi', 24, '', '', ''), " +
+            "( 'Tomorrow', 'Kisum', 24, '', '', ''), " +
+            "( 'Sunrise', 'Pagsikat ng suga', 24, '', '', ''), " +
+            "( 'Morning', 'Kamdong', 24, '', '', ''), " +
+            "( 'Noon', 'Balitungtung na suga', 24, '', '', ''), " +
+            "( 'Today', 'Adun', 24, '', '', ''), " +
+            "( 'Night', 'Gabi', 24, '', '', ''), " +
             // PHRASES
-            "('', '', 6, '', 'Who is with you?', 'Sinu ya upud mo?')," +
-            "('', '', 6, '', 'What is his name?', 'Sinu ya an nan?')," +
-            "('', '', 6, '', 'I don’t remember', 'Waa ma kadumdudom')," +
-            "('', '', 6, '', 'What is the matter with you?', 'Ima kuno kaw?')," +
-            "('', '', 6, '', 'How is your child?', 'Kumusta ya isu mo?')," +
-            "('', '', 6, '', 'What are you doing?', 'Uno ya gawbuli mo?')," +
-            "('', '', 6, '', 'What are you cooking?', 'Uno ya iluto mo?')," +
-            "('', '', 6, '', 'I’m just cooking ampalaya with eggs', 'Migaluto a ng paliya gisagulan og ikug')," +
-            "('', '', 6, '', 'If you would like, we can get some after a while', 'Kung gusto kaw, kumamang lang kita kagaya')," +
-            "('', '', 6, '', 'Yes, after we finish breakfast', 'Uu, kagaya pagkatapos nami mamahaw')," +
-            "('', '', 6, '', 'Then, shall we go?', 'Adun, unda kita manaw?')," +
-            "('', '', 6, '', 'What will you drink?', 'Uno yan kanmu inumun?')," +
-            "('', '', 6, '', 'Do you drink in coffee?', 'Un kaw minum ng kape?')," +
-            "('', '', 6, '', 'Yes, I’ll just wait', 'U,ako lang magtagad')," +
-            "('', '', 6, '', 'Yes, let’s go so we can return soon, because we have somewhere else to go', 'U, unda kita manaw antak makabalik kita dayun kay awn pay adtuan ta')," +
-            "('', '', 6, '', 'You really know how to cook', 'Madi yaw kaw magluto')," +
-            "('', '', 6, '', 'What time does the meeting start?', 'Uno urasa magsugod ya miting?')," +
-            "('', '', 6, '', 'What to say people you meet?', 'Ya ikalawong mu sab ago na ataw nabago no ikila?')," +
-            "('', '', 6, '', 'Where you from originally?', 'Taga ayn kaw kadi?')," +
-            "('', '', 6, '', 'What is your name?', 'Sino ya an mu?')," +
-            "('', '', 6, '', 'What should I call you?', 'Uno ya tawag ka kanmu?')," +
-            "('', '', 6, '', 'I’ll be going home now', 'Un an ka muli')," +
-            "('', '', 6, '', 'Yes, I’ll certainly comeback', 'Ako gayd tumangag')," +
-            "('', '', 6, '', 'What can I do for you?', 'Unu yan ikabulig ko kanmu?')," +
-            "('', '', 6, '', 'Where did you just come from?', 'Ayn kaw sikun adun?')"
+            // Question
+            "('', '', 25, '', 'Who is with you?', 'Sinu ya upud mo?')," +
+            "('', '', 25, '', 'What is his name?', 'Sinu ya an nan?')," +
+            "('', '', 25, '', 'What is the matter with you?', 'Ima kuno kaw?')," +
+            "('', '', 25, '', 'How is your child?', 'Kumusta ya isu mo?')," +
+            "('', '', 25, '', 'What are you doing?', 'Uno ya gawbuli mo?')," +
+            "('', '', 25, '', 'What are you cooking?', 'Uno ya iluto mo?')," +
+            "('', '', 25, '', 'What will you drink?', 'Uno yan kanmu inumun?')," +
+            "('', '', 25, '', 'Do you drink in coffee?', 'Un kaw minum ng kape?')," +
+            "('', '', 25, '', 'What time does the meeting start?', 'Uno urasa magsugod ya miting?')," +
+            "('', '', 25, '', 'What to say people you meet?', 'Ya ikalawong mu sab ago na ataw nabago no ikila?')," +
+            "('', '', 25, '', 'Where you from originally?', 'Taga ayn kaw kadi?')," +
+            "('', '', 25, '', 'What is your name?', 'Sino ya an mu?')," +
+            "('', '', 25, '', 'What can I do for you?', 'Unu yan ikabulig ko kanmu?')," +
+            "('', '', 25, '', 'What should I call you?', 'Uno ya tawag ka kanmu?')," +
+            "('', '', 25, '', 'Where did you just come from?', 'Ayn kaw sikun adun?')," +
+            "('', '', 5, '', 'Then, shall we go?', 'Adun, unda kita manaw?')," +
+            // Response
+            "('', '', 26, '', 'I don’t remember', 'Waa ma kadumdudom')," +
+            "('', '', 26, '', 'I’m just cooking ampalaya with eggs', 'Migaluto a ng paliya gisagulan og ikug')," +
+            "('', '', 26, '', 'If you would like, we can get some after a while', 'Kung gusto kaw, kumamang lang kita kagaya')," +
+            "('', '', 26, '', 'Yes, after we finish breakfast', 'Uu, kagaya pagkatapos nami mamahaw')," +
+            "('', '', 26, '', 'Yes, I’ll just wait', 'U,ako lang magtagad')," +
+            "('', '', 26, '', 'Yes, let’s go so we can return soon, because we have somewhere else to go', 'U, unda kita manaw antak makabalik kita dayun kay awn pay adtuan ta')," +
+            "('', '', 26, '', 'You really know how to cook', 'Madi yaw kaw magluto')," +
+            "('', '', 26, '', 'I’ll be going home now', 'Un an ka muli')," +
+            "('', '', 26, '', 'Yes, I’ll certainly comeback', 'Ako gayd tumangag')"
 
     )
     void insert();
@@ -174,7 +314,7 @@ public interface AppDataDao {
     List<AppDataEntity> getData(int category);
 
     @Query("SELECT * FROM app_data  WHERE category = :category AND " +
-            "(CASE WHEN :category = 5 THEN english LIKE :searchQuery ELSE english_phrase LIKE :searchQuery END)")
+            "(CASE WHEN :category BETWEEN 10 AND 24 THEN english LIKE :searchQuery ELSE english_phrase LIKE :searchQuery END)")
     LiveData<List<AppDataEntity>> getLiveData(int category, String searchQuery);
 
     @Query("SELECT * FROM app_data WHERE id = :id")

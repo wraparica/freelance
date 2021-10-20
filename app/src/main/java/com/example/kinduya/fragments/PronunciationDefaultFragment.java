@@ -76,6 +76,6 @@ public class PronunciationDefaultFragment extends Fragment implements Pronunciat
         fragmentTransaction.setCustomAnimations(R.anim.from_right,
                 R.anim.to_left, R.anim.from_left, R.anim.to_right);
         fragmentTransaction.replace(R.id.frameLayout,
-                PronunciationDefaultTranslationFragment.newInstance(appDataEntity.getId(), category, position)).commit();
+                PronunciationDefaultTranslationFragment.newInstance(appDataEntity.getId(), category, position, false)).commit();
     }
 }

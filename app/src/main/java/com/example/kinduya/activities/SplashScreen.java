@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.WindowManager;
+import android.widget.VideoView;
 
 import com.example.kinduya.MainActivity;
 import com.example.kinduya.R;
@@ -16,7 +19,8 @@ import com.example.kinduya.viewmodel.SplashScreenViewModel;
 
 public class SplashScreen extends AppCompatActivity {
 
-    VideoBackgroundView videoBackgroundView;
+    private VideoView videoView;
+    MediaPlayer mMediaPlayer;
     KinduyaDatabase kinduyaDatabase;
     private SplashScreenViewModel splashScreenViewModel;
     @Override
@@ -27,11 +31,39 @@ public class SplashScreen extends AppCompatActivity {
         kinduyaDatabase = KinduyaDatabase.getInstance(this.getApplicationContext());
         splashScreenViewModel = new ViewModelProvider(this).get(SplashScreenViewModel.class);
         splashScreenViewModel.insertQuestion(kinduyaDatabase);
+        videoView = findViewById(R.id.videoview);
         Handler handler = new Handler();
-        handler.postDelayed(() -> {
+
+
+        Uri uri = Uri.parse("android.resource://"
+                + getPackageName()
+                + "/"
+                + R.raw.vid);
+        videoView.setVideoURI(uri);
+        videoView.start();
+        videoView.setOnCompletionListener(mediaPlayer -> {
             Intent intent = new Intent(SplashScreen.this, MainActivity.class);
             startActivity(intent);
-        }, 2000);
+        });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        videoView.pause();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        videoView.start();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        mMediaPlayer.release();
+        mMediaPlayer = null;
     }
 
 }
