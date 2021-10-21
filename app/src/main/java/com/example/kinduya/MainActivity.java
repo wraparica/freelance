@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
                 + "/"
                 + R.raw.background_music_1);
         mediaPlayer = MediaPlayer.create(this, uri);
-
+        mediaPlayer.setLooping(true);
         mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
@@ -34,6 +34,12 @@ public class MainActivity extends AppCompatActivity {
                     mediaPlayer.seekTo(currentVidoePosition);
                     mediaPlayer.start();
                 }
+            }
+        });
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+                mediaPlayer.start();
             }
         });
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
