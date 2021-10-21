@@ -24,7 +24,7 @@ public class MP3Service extends Service {
         Uri uri = Uri.parse("android.resource://"
                 + getPackageName()
                 + "/"
-                + R.raw.background_music);
+                + R.raw.background_music_1);
         mediaPlayer = MediaPlayer.create(this, uri);
         mediaPlayer.setLooping(true);
         mediaPlayer.start();

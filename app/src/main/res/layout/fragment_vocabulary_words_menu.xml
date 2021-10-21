@@ -11,12 +11,13 @@
         android:id="@+id/logo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="20dp"
         android:paddingBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/rvMenu">
+
+
 
         <ImageView
             android:id="@+id/back"
@@ -25,10 +26,13 @@
             android:layout_margin="20dp"
             android:src="@drawable/button_back" />
 
+
         <ImageView
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
             android:src="@drawable/vocabulary" />
 
     </RelativeLayout>

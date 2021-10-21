@@ -277,32 +277,32 @@ public interface AppDataDao {
             "( 'Night', 'Gabi', 24, '', '', ''), " +
             // PHRASES
             // Question
-            "('', '', 25, '', 'Who is with you?', 'Sinu ya upud mo?')," +
-            "('', '', 25, '', 'What is his name?', 'Sinu ya an nan?')," +
-            "('', '', 25, '', 'What is the matter with you?', 'Ima kuno kaw?')," +
-            "('', '', 25, '', 'How is your child?', 'Kumusta ya isu mo?')," +
-            "('', '', 25, '', 'What are you doing?', 'Uno ya gawbuli mo?')," +
-            "('', '', 25, '', 'What are you cooking?', 'Uno ya iluto mo?')," +
-            "('', '', 25, '', 'What will you drink?', 'Uno yan kanmu inumun?')," +
-            "('', '', 25, '', 'Do you drink in coffee?', 'Un kaw minum ng kape?')," +
-            "('', '', 25, '', 'What time does the meeting start?', 'Uno urasa magsugod ya miting?')," +
-            "('', '', 25, '', 'What to say people you meet?', 'Ya ikalawong mu sab ago na ataw nabago no ikila?')," +
-            "('', '', 25, '', 'Where you from originally?', 'Taga ayn kaw kadi?')," +
-            "('', '', 25, '', 'What is your name?', 'Sino ya an mu?')," +
-            "('', '', 25, '', 'What can I do for you?', 'Unu yan ikabulig ko kanmu?')," +
-            "('', '', 25, '', 'What should I call you?', 'Uno ya tawag ka kanmu?')," +
-            "('', '', 25, '', 'Where did you just come from?', 'Ayn kaw sikun adun?')," +
-            "('', '', 5, '', 'Then, shall we go?', 'Adun, unda kita manaw?')," +
+            "('', '', 50, '', 'Who is with you?', 'Sinu ya upud mo?')," +
+            "('', '', 50, '', 'What is his name?', 'Sinu ya an nan?')," +
+            "('', '', 50, '', 'What is the matter with you?', 'Ima kuno kaw?')," +
+            "('', '', 50, '', 'How is your child?', 'Kumusta ya isu mo?')," +
+            "('', '', 50, '', 'What are you doing?', 'Uno ya gawbuli mo?')," +
+            "('', '', 50, '', 'What are you cooking?', 'Uno ya iluto mo?')," +
+            "('', '', 50, '', 'What will you drink?', 'Uno yan kanmu inumun?')," +
+            "('', '', 50, '', 'Do you drink in coffee?', 'Un kaw minum ng kape?')," +
+            "('', '', 50, '', 'What time does the meeting start?', 'Uno urasa magsugod ya miting?')," +
+            "('', '', 50, '', 'What to say people you meet?', 'Ya ikalawong mu sab ago na ataw nabago no ikila?')," +
+            "('', '', 50, '', 'Where you from originally?', 'Taga ayn kaw kadi?')," +
+            "('', '', 50, '', 'What is your name?', 'Sino ya an mu?')," +
+            "('', '', 50, '', 'What can I do for you?', 'Unu yan ikabulig ko kanmu?')," +
+            "('', '', 50, '', 'What should I call you?', 'Uno ya tawag ka kanmu?')," +
+            "('', '', 50, '', 'Where did you just come from?', 'Ayn kaw sikun adun?')," +
+            "('', '', 50, '', 'Then, shall we go?', 'Adun, unda kita manaw?')," +
             // Response
-            "('', '', 26, '', 'I don’t remember', 'Waa ma kadumdudom')," +
-            "('', '', 26, '', 'I’m just cooking ampalaya with eggs', 'Migaluto a ng paliya gisagulan og ikug')," +
-            "('', '', 26, '', 'If you would like, we can get some after a while', 'Kung gusto kaw, kumamang lang kita kagaya')," +
-            "('', '', 26, '', 'Yes, after we finish breakfast', 'Uu, kagaya pagkatapos nami mamahaw')," +
-            "('', '', 26, '', 'Yes, I’ll just wait', 'U,ako lang magtagad')," +
-            "('', '', 26, '', 'Yes, let’s go so we can return soon, because we have somewhere else to go', 'U, unda kita manaw antak makabalik kita dayun kay awn pay adtuan ta')," +
-            "('', '', 26, '', 'You really know how to cook', 'Madi yaw kaw magluto')," +
-            "('', '', 26, '', 'I’ll be going home now', 'Un an ka muli')," +
-            "('', '', 26, '', 'Yes, I’ll certainly comeback', 'Ako gayd tumangag')"
+            "('', '', 51, '', 'I don’t remember', 'Waa ma kadumdudom')," +
+            "('', '', 51, '', 'I’m just cooking ampalaya with eggs', 'Migaluto a ng paliya gisagulan og ikug')," +
+            "('', '', 51, '', 'If you would like, we can get some after a while', 'Kung gusto kaw, kumamang lang kita kagaya')," +
+            "('', '', 51, '', 'Yes, after we finish breakfast', 'Uu, kagaya pagkatapos nami mamahaw')," +
+            "('', '', 51, '', 'Yes, I’ll just wait', 'U,ako lang magtagad')," +
+            "('', '', 51, '', 'Yes, let’s go so we can return soon, because we have somewhere else to go', 'U, unda kita manaw antak makabalik kita dayun kay awn pay adtuan ta')," +
+            "('', '', 51, '', 'You really know how to cook', 'Madi yaw kaw magluto')," +
+            "('', '', 51, '', 'I’ll be going home now', 'Un an ka muli')," +
+            "('', '', 51, '', 'Yes, I’ll certainly comeback', 'Ako gayd tumangag')"
 
     )
     void insert();

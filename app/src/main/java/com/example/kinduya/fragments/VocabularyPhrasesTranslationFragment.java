@@ -24,21 +24,27 @@ public class VocabularyPhrasesTranslationFragment extends Fragment {
     private static final String ARG_ID = "id";
     private static final String ARG_CATEGORY = "category";
     private static final String ARG_POSITION = "position";
+    private static final String ARG_MAIN_POSITION = "main_position";
     private static final String ARG_SEARCH_QUERY = "search";
+    private static final String ARG_IS_PHRASE = "phrase";
     private long id;
-    private int category, position;
+    private int category, position, mainPosition;
     private String searchQueryParams;
     ImageView imageView, back;
     TextInputEditText tvEnglish, tvMandaya;
     KinduyaDatabase kinduyaDatabase;
-
-    public static VocabularyPhrasesTranslationFragment newInstance(long id, int category, int position, String searchQueryParams) {
+    boolean phrase;
+    public static VocabularyPhrasesTranslationFragment newInstance(long id, int category, int position,
+                                                                 int mainPosition, String searchQueryParams,
+                                                                 boolean phrase) {
         VocabularyPhrasesTranslationFragment fragment = new VocabularyPhrasesTranslationFragment();
         Bundle args = new Bundle();
         args.putLong(ARG_ID, id);
         args.putInt(ARG_CATEGORY, category);
         args.putInt(ARG_POSITION, position);
+        args.putInt(ARG_MAIN_POSITION, mainPosition);
         args.putString(ARG_SEARCH_QUERY, searchQueryParams);
+        args.putBoolean(ARG_IS_PHRASE, phrase);
         fragment.setArguments(args);
         return fragment;
     }
@@ -50,7 +56,9 @@ public class VocabularyPhrasesTranslationFragment extends Fragment {
             id = getArguments().getLong(ARG_ID);
             category = getArguments().getInt(ARG_CATEGORY);
             position = getArguments().getInt(ARG_POSITION);
+            mainPosition = getArguments().getInt(ARG_MAIN_POSITION);
             searchQueryParams = getArguments().getString(ARG_SEARCH_QUERY);
+            phrase = getArguments().getBoolean(ARG_IS_PHRASE);
         }
     }
 
@@ -80,7 +88,7 @@ public class VocabularyPhrasesTranslationFragment extends Fragment {
         FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.from_left,
                 R.anim.to_right, R.anim.from_right, R.anim.to_left);
-        fragmentTransaction.replace(R.id.frameLayout, VocabularyPhrasesFragment.newInstance(category, position, searchQueryParams)).commit();
+        fragmentTransaction.replace(R.id.frameLayout, VocabularyPhrasesFragment.newInstance(category, position, mainPosition, searchQueryParams, phrase)).commit();
     }
 
     public int getImage(String imageName) {

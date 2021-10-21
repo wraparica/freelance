@@ -41,27 +41,28 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:weightSum="3">
 
             <ImageView
                 android:id="@+id/game"
-                android:layout_width="75dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:src="@drawable/game" />
+                tools:src="@drawable/game_n" />
             <ImageView
                 android:id="@+id/vocabulary"
-                android:layout_width="75dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:src="@drawable/vocabulary" />
+                tools:src="@drawable/vocabulary_n" />
 
             <ImageView
                 android:id="@+id/music"
-                android:layout_width="75dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:src="@drawable/music" />
+                tools:src="@drawable/cultural_songs_n" />
 
 
         </LinearLayout>
@@ -70,26 +71,27 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:weightSum="3"
             android:layout_weight="1">
             <ImageView
                 android:id="@+id/speech_to_speech"
-                android:layout_width="75dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:src="@drawable/speech_to_speech" />
+                tools:src="@drawable/speech_to_speech_n" />
             <ImageView
                 android:id="@+id/video"
-                android:layout_width="75dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:src="@drawable/video" />
+                tools:src="@drawable/videos_n" />
             <ImageView
                 android:id="@+id/pronunciation"
-                android:layout_width="75dp"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_centerVertical="true"
-                tools:src="@drawable/pronunciation" />
+                tools:src="@drawable/proununcations_n" />
 
 
         </LinearLayout>

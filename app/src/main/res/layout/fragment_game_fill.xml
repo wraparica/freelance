@@ -10,12 +10,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+
         <VideoView
             android:id="@+id/videoview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintVertical_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -41,15 +41,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <ImageView
-                    android:id="@+id/back"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:src="@drawable/button_back" />
-
                 <TextView
                     android:id="@+id/questionCount"
                     android:layout_width="wrap_content"
@@ -72,6 +63,7 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
+                android:padding="10dp"
                 android:orientation="horizontal"
                 android:layout_below="@id/logo"
                 android:weightSum="100">
@@ -79,10 +71,11 @@
                 <ImageView
                     android:id="@+id/questionPicture"
                     android:layout_width="0dp"
-                    android:layout_height="200dp"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
                     android:layout_gravity="center"
                     android:layout_weight="50"
-                    tools:src="@drawable/teeth" />
+                    tools:src="@drawable/yellow" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -164,6 +157,23 @@
 
         </LinearLayout>
 
+
+        <RelativeLayout
+            android:id="@+id/rlBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/back"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentTop="true"
+                android:src="@drawable/button_back" />
+
+        </RelativeLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

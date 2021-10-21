@@ -29,6 +29,7 @@ public class VocabularyWordsMenuFragment extends Fragment implements VocabularyW
     private static final String ARG_CATEGORY = "category";
     private static final String ARG_POSITION = "position";
     private static final String ARG_SEARCH_QUERY = "search";
+    private static final String ARG_IS_PHRASE = "phrase";
 
 
     KinduyaDatabase kinduyaDatabase;
@@ -36,13 +37,15 @@ public class VocabularyWordsMenuFragment extends Fragment implements VocabularyW
     VocabularyWordsMenuAdapter adapter;
     ImageView back;
     int category, position;
+    boolean phrase;
 
-    public static VocabularyWordsMenuFragment newInstance(int category, int position, String searchQueryParams) {
+    public static VocabularyWordsMenuFragment newInstance(int category, int position, String searchQueryParams, boolean phrase) {
         VocabularyWordsMenuFragment fragment = new VocabularyWordsMenuFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_CATEGORY, category);
         args.putInt(ARG_POSITION, position);
         args.putString(ARG_SEARCH_QUERY, searchQueryParams);
+        args.putBoolean(ARG_IS_PHRASE, phrase);
         fragment.setArguments(args);
         return fragment;
     }
@@ -53,6 +56,7 @@ public class VocabularyWordsMenuFragment extends Fragment implements VocabularyW
         if (getArguments() != null) {
             category = getArguments().getInt(ARG_CATEGORY);
             position = getArguments().getInt(ARG_POSITION);
+            phrase = getArguments().getBoolean(ARG_IS_PHRASE);
         }
     }
 
@@ -73,7 +77,7 @@ public class VocabularyWordsMenuFragment extends Fragment implements VocabularyW
 
         adapter = new VocabularyWordsMenuAdapter(this, requireContext());
         rvVocabularyWords.setAdapter(adapter);
-        adapter.submitList(populateItems());
+        adapter.submitList(populateItems(phrase));
         rvVocabularyWords.scrollToPosition(position);
         back = v.findViewById(R.id.back);
         back.setOnClickListener(view -> back());
@@ -97,28 +101,38 @@ public class VocabularyWordsMenuFragment extends Fragment implements VocabularyW
         FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.from_right,
                 R.anim.to_left, R.anim.from_left, R.anim.to_right);
-        fragmentTransaction.replace(R.id.frameLayout,
-                VocabularyWordsFragment.newInstance(item.getCategory(), 0, position, "")).commit();
+        if (phrase) {
+            fragmentTransaction.replace(R.id.frameLayout,
+                    VocabularyPhrasesFragment.newInstance(item.getCategory(), 0, position, "", phrase)).commit();
+        } else {
+            fragmentTransaction.replace(R.id.frameLayout,
+                    VocabularyWordsFragment.newInstance(item.getCategory(), 0, position, "", phrase)).commit();
+        }
     }
 
 
-    private List<VocabularyWordsMenuObject> populateItems(){
+    private List<VocabularyWordsMenuObject> populateItems(boolean phrase){
         List<VocabularyWordsMenuObject> items = new ArrayList<>();
-        items.add(new VocabularyWordsMenuObject("family","family", 10));
-        items.add(new VocabularyWordsMenuObject("gender","gender", 11));
-        items.add(new VocabularyWordsMenuObject("person","persons", 12));
-        items.add(new VocabularyWordsMenuObject("relationship","relationship", 13));
-        items.add(new VocabularyWordsMenuObject("animals","animals", 14));
-        items.add(new VocabularyWordsMenuObject("questions","questions", 15));
-        items.add(new VocabularyWordsMenuObject("emotions","emotions", 16));
-        items.add(new VocabularyWordsMenuObject("feelings","feelings", 17));
-        items.add(new VocabularyWordsMenuObject("beverage","beverage", 18));
-        items.add(new VocabularyWordsMenuObject("illness","illness", 19));
-        items.add(new VocabularyWordsMenuObject("foods","foods", 20));
-        items.add(new VocabularyWordsMenuObject("vegetables","vegetables", 21));
-        items.add(new VocabularyWordsMenuObject("insects","insects", 22));
-        items.add(new VocabularyWordsMenuObject("fruits","fruits", 23));
-        items.add(new VocabularyWordsMenuObject("day","day", 24));
+        if (!phrase) {
+            items.add(new VocabularyWordsMenuObject("family", "family", 10));
+            items.add(new VocabularyWordsMenuObject("gender", "gender", 11));
+            items.add(new VocabularyWordsMenuObject("person", "persons", 12));
+            items.add(new VocabularyWordsMenuObject("relationship", "relationship", 13));
+            items.add(new VocabularyWordsMenuObject("animals", "animals", 14));
+            items.add(new VocabularyWordsMenuObject("questions", "questions", 15));
+            items.add(new VocabularyWordsMenuObject("emotions", "emotions", 16));
+            items.add(new VocabularyWordsMenuObject("feelings", "feelings", 17));
+            items.add(new VocabularyWordsMenuObject("beverage", "beverage", 18));
+            items.add(new VocabularyWordsMenuObject("illness", "illness", 19));
+            items.add(new VocabularyWordsMenuObject("foods", "foods", 20));
+            items.add(new VocabularyWordsMenuObject("vegetables", "vegetables", 21));
+            items.add(new VocabularyWordsMenuObject("insects", "insects", 22));
+            items.add(new VocabularyWordsMenuObject("fruits", "fruits", 23));
+            items.add(new VocabularyWordsMenuObject("day", "day", 24));
+        } else {
+            items.add(new VocabularyWordsMenuObject("questions", "questions", 50));
+            items.add(new VocabularyWordsMenuObject("response", "response", 51));
+        }
         return items;
     }
 

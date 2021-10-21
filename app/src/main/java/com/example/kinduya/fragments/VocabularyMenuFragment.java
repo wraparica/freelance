@@ -47,14 +47,14 @@ public class VocabularyMenuFragment extends Fragment {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.from_right,
                     R.anim.to_left, R.anim.from_left, R.anim.to_right);
-            fragmentTransaction.replace(R.id.frameLayout, VocabularyWordsMenuFragment.newInstance(0, 0, null)).commit();
+            fragmentTransaction.replace(R.id.frameLayout, VocabularyWordsMenuFragment.newInstance(0, 0, null, false)).commit();
         });
 
         phrases.setOnClickListener(view -> {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.from_right,
                     R.anim.to_left, R.anim.from_left, R.anim.to_right);
-            fragmentTransaction.replace(R.id.frameLayout, new VocabularyPhrasesFragment()).commit();
+            fragmentTransaction.replace(R.id.frameLayout, VocabularyWordsMenuFragment.newInstance(0, 0, null, true)).commit();
         });
     }
 
