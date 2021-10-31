@@ -46,12 +46,12 @@ public class MainFragment extends Fragment {
         music = v.findViewById(R.id.music);
         speech_to_speech = v.findViewById(R.id.speech_to_speech);
 
-        Glide.with(this).load(getImage("proununcations_n")).into(pronunciation);
+        Glide.with(this).load(getImage("pronuncation_1")).into(pronunciation);
         Glide.with(this).load(getImage("videos_n")).into(video);
-        Glide.with(this).load(getImage("vocabulary_n")).into(vocabulary);
-        Glide.with(this).load(getImage("cultural_songs_n")).into(music);
-        Glide.with(this).load(getImage("game_n")).into(game);
-        Glide.with(this).load(getImage("speech_to_speech_n")).into(speech_to_speech);
+        Glide.with(this).load(getImage("vocabulary_1")).into(vocabulary);
+        Glide.with(this).load(getImage("songs_1")).into(music);
+        Glide.with(this).load(getImage("game_1")).into(game);
+        Glide.with(this).load(getImage("speech_to_speech_1")).into(speech_to_speech);
         game.setOnClickListener(view -> {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.from_right,
@@ -69,6 +69,14 @@ public class MainFragment extends Fragment {
             fragmentTransaction.setCustomAnimations(R.anim.from_right,
                     R.anim.to_left, R.anim.from_left, R.anim.to_right);
             fragmentTransaction.replace(R.id.frameLayout, new PronunciationMainFragment()).commit();
+
+        });
+
+        music.setOnClickListener(view -> {
+            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.from_right,
+                    R.anim.to_left, R.anim.from_left, R.anim.to_right);
+            fragmentTransaction.replace(R.id.frameLayout, CulturalMusicMainFragment.newInstance(true)).commit();
 
         });
     }

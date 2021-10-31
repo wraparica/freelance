@@ -51,10 +51,6 @@ public class HighscoreFragment extends Fragment {
         back.setOnClickListener(v -> back());
         adapter = new HighscoreAdapter();
         List<HighscoreEntity> data = kinduyaDatabase.highscoreDao().getHighscores();
-        for(HighscoreEntity h : data){
-            Log.d("highscores", h.getName());
-            Log.d("highscores", String.valueOf(h.getScore()));
-        }
         adapter.submitList(data);
         highscores.setLayoutManager(new LinearLayoutManager(requireContext()));
         highscores.setAdapter(adapter);

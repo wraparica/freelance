@@ -42,7 +42,7 @@ public class SplashScreen extends AppCompatActivity {
         Uri uri = Uri.parse("android.resource://"
                 + getPackageName()
                 + "/"
-                + R.raw.splash);
+                + R.raw.splash_new);
         videoView.setVideoURI(uri);
         videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override

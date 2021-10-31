@@ -14,7 +14,7 @@ import com.example.kinduya.fragments.MainFragment;
 import com.example.kinduya.service.MP3Service;
 
 public class MainActivity extends AppCompatActivity {
-    MediaPlayer mediaPlayer;
+    public static MediaPlayer mediaPlayer;
     int currentVidoePosition;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,24 +26,24 @@ public class MainActivity extends AppCompatActivity {
                 + R.raw.background_music_1);
         mediaPlayer = MediaPlayer.create(this, uri);
         mediaPlayer.setLooping(true);
-        mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                if(currentVidoePosition != 0){
-                    mediaPlayer.setLooping(true);
-                    mediaPlayer.seekTo(currentVidoePosition);
-                    mediaPlayer.start();
-                }
-            }
-        });
-        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
+        mediaPlayer.setOnPreparedListener(mediaPlayer -> {
+            if(currentVidoePosition != 0){
+                mediaPlayer.setLooping(true);
+                mediaPlayer.seekTo(currentVidoePosition);
                 mediaPlayer.start();
             }
         });
+        mediaPlayer.setOnCompletionListener(mediaPlayer -> mediaPlayer.start());
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, new MainFragment()).commit();
+    }
+
+    public static void pauseBg(){
+        mediaPlayer.pause();
+    }
+
+    public static void playBg(){
+        mediaPlayer.start();
     }
 
     @Override
