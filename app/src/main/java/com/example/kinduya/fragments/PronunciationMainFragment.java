@@ -40,11 +40,11 @@ public class PronunciationMainFragment extends Fragment {
         bodyParts = v.findViewById(R.id.bodyParts);
         back = v.findViewById(R.id.back);
         pronunciation = v.findViewById(R.id.pronunciation);
-        Glide.with(this).load(getImage("shapes")).into(shapes);
+        Glide.with(this).load(getImage("shapes_")).into(shapes);
         Glide.with(this).load(getImage("pronunciation")).into(pronunciation);
-        Glide.with(this).load(getImage("colors_p")).into(colors);
-        Glide.with(this).load(getImage("bodyparts")).into(bodyParts);
-        Glide.with(this).load(getImage("numbers_p")).into(numbers);
+        Glide.with(this).load(getImage("colors")).into(colors);
+        Glide.with(this).load(getImage("body_parts")).into(bodyParts);
+        Glide.with(this).load(getImage("numbers")).into(numbers);
         back.setOnClickListener(view -> back());
         shapes.setOnClickListener(view -> {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();

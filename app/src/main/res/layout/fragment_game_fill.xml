@@ -60,28 +60,29 @@
                 android:id="@+id/pronunciationTranslation"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/logo"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="50dp"
                 android:layout_marginEnd="50dp"
-                android:padding="10dp"
+                android:layout_marginTop="20dp"
                 android:orientation="horizontal"
-                android:layout_below="@id/logo"
+                android:padding="10dp"
                 android:weightSum="100">
 
                 <ImageView
                     android:id="@+id/questionPicture"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
-                    android:layout_margin="10dp"
                     android:layout_gravity="center"
+                    android:layout_margin="10dp"
                     android:layout_weight="50"
                     tools:src="@drawable/yellow" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="50"
                     android:layout_gravity="center"
+                    android:layout_weight="50"
                     android:orientation="vertical"
                     android:weightSum="2">
 
@@ -91,8 +92,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:textColorHint="@color/white"
-                        android:hint="English">
+                        android:hint="English"
+                        android:textColorHint="@color/white">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/englishTranslation"
@@ -100,10 +101,10 @@
                             android:layout_height="wrap_content"
                             android:clickable="false"
                             android:cursorVisible="false"
-                            android:textColor="@color/white"
                             android:focusable="false"
                             android:inputType="text"
                             android:text="William Robert"
+                            android:textColor="@color/white"
                             android:textSize="20sp">
 
                         </com.google.android.material.textfield.TextInputEditText>
@@ -115,9 +116,9 @@
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                         android:layout_width="match_parent"
                         android:layout_height="0dp"
-                        android:textColorHint="@color/white"
                         android:layout_weight="1"
-                        android:hint="Mandaya">
+                        android:hint="Mandaya"
+                        android:textColorHint="@color/white">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/questionText"
@@ -125,10 +126,10 @@
                             android:layout_height="wrap_content"
                             android:clickable="false"
                             android:cursorVisible="false"
-                            android:textColor="@color/white"
                             android:focusable="false"
                             android:inputType="text"
                             android:text="William Robert"
+                            android:textColor="@color/white"
                             android:textSize="20sp">
 
                         </com.google.android.material.textfield.TextInputEditText>

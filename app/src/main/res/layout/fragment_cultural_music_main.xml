@@ -45,10 +45,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:spanCount="2"
+        app:spanCount="3"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:spanCount="2"
+        tools:spanCount="3"
         tools:itemCount="20"
         tools:listitem="@layout/vocabulary_words_menu_layout">
     </androidx.recyclerview.widget.RecyclerView>

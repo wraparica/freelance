@@ -34,13 +34,30 @@ public class AppDataEntity {
     @ColumnInfo(name = "mandaya_phrase")
     private String mandaya_phrase;
 
-    public AppDataEntity(String mandaya, String english, int category, String image, String english_phrase, String mandaya_phrase) {
+    @ColumnInfo(name = "mandaya_recording")
+    private String mandaya_recording;
+
+    @ColumnInfo(name = "english_recording")
+    private String english_recording;
+
+    @ColumnInfo(name = "english_phrase_recording")
+    private String english_phrase_recording;
+
+    @ColumnInfo(name = "mandaya_phrase_recording")
+    private String mandaya_phrase_recording;
+
+    public AppDataEntity(String mandaya, String english, int category, String image, String english_phrase,
+                         String mandaya_phrase, String mandaya_recording, String english_recording, String english_phrase_recording, String mandaya_phrase_recording) {
         this.mandaya = mandaya;
         this.english = english;
         this.category = category;
         this.image = image;
         this.english_phrase = english_phrase;
         this.mandaya_phrase = mandaya_phrase;
+        this.mandaya_recording = mandaya_recording;
+        this.english_recording = english_recording;
+        this.english_phrase_recording = english_phrase_recording;
+        this.mandaya_phrase_recording = mandaya_phrase_recording;
     }
 
     public long getId() {
@@ -116,5 +133,37 @@ public class AppDataEntity {
 
     public void setMandaya_phrase(String mandaya_phrase) {
         this.mandaya_phrase = mandaya_phrase;
+    }
+
+    public String getMandaya_recording() {
+        return mandaya_recording;
+    }
+
+    public void setMandaya_recording(String mandaya_recording) {
+        this.mandaya_recording = mandaya_recording;
+    }
+
+    public String getEnglish_recording() {
+        return english_recording;
+    }
+
+    public void setEnglish_recording(String english_recording) {
+        this.english_recording = english_recording;
+    }
+
+    public String getEnglish_phrase_recording() {
+        return english_phrase_recording;
+    }
+
+    public void setEnglish_phrase_recording(String english_phrase_recording) {
+        this.english_phrase_recording = english_phrase_recording;
+    }
+
+    public String getMandaya_phrase_recording() {
+        return mandaya_phrase_recording;
+    }
+
+    public void setMandaya_phrase_recording(String mandaya_phrase_recording) {
+        this.mandaya_phrase_recording = mandaya_phrase_recording;
     }
 }

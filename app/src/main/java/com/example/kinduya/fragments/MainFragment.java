@@ -47,7 +47,7 @@ public class MainFragment extends Fragment {
         speech_to_speech = v.findViewById(R.id.speech_to_speech);
 
         Glide.with(this).load(getImage("pronuncation_1")).into(pronunciation);
-        Glide.with(this).load(getImage("videos_n")).into(video);
+        Glide.with(this).load(getImage("videos_1")).into(video);
         Glide.with(this).load(getImage("vocabulary_1")).into(vocabulary);
         Glide.with(this).load(getImage("songs_1")).into(music);
         Glide.with(this).load(getImage("game_1")).into(game);
@@ -77,6 +77,14 @@ public class MainFragment extends Fragment {
             fragmentTransaction.setCustomAnimations(R.anim.from_right,
                     R.anim.to_left, R.anim.from_left, R.anim.to_right);
             fragmentTransaction.replace(R.id.frameLayout, CulturalMusicMainFragment.newInstance(true)).commit();
+
+        });
+
+        video.setOnClickListener(view -> {
+            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.from_right,
+                    R.anim.to_left, R.anim.from_left, R.anim.to_right);
+            fragmentTransaction.replace(R.id.frameLayout, CulturalMusicMainFragment.newInstance(false)).commit();
 
         });
     }

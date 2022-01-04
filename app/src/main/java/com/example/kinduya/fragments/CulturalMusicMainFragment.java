@@ -23,11 +23,6 @@ import java.util.List;
 
 public class CulturalMusicMainFragment extends Fragment implements CulturalMusicMainAdapter.ItemOnClickListener {
 
-
-    private static final String ARG_ID = "id";
-    private static final String ARG_CATEGORY = "category";
-    private static final String ARG_POSITION = "position";
-    private static final String ARG_SEARCH_QUERY = "search";
     private static final String ARG_IS_MUSIC = "music";
 
 
@@ -85,19 +80,29 @@ public class CulturalMusicMainFragment extends Fragment implements CulturalMusic
     private List<CulturalMusicMainObject> populateItems(boolean music){
         List<CulturalMusicMainObject> items = new ArrayList<>();
         if (music) {
-            items.add(new CulturalMusicMainObject("family", "family", 1));
-            items.add(new CulturalMusicMainObject("gender", "gender", 2));
-            items.add(new CulturalMusicMainObject("person", "persons", 3));
-            items.add(new CulturalMusicMainObject("relationship", "relationship", 4));
+            items.add(new CulturalMusicMainObject("Adecer Kaw Pumanaw", "adecer_kaw_pumanaw", 1));
+            items.add(new CulturalMusicMainObject("Banwa na Madayaw", "banwa_na_madayaw", 2));
+            items.add(new CulturalMusicMainObject("Davao Oriental Mandaya Doxology", "davao_oriental_mandaya_doxology", 3));
+            items.add(new CulturalMusicMainObject("Handumon Ko", "handumon_ko", 4));
+            items.add(new CulturalMusicMainObject("Oh Budi", "oh_budi", 5));
+            items.add(new CulturalMusicMainObject("Olo Adon Pa Kaw", "olo_adon_pa_kaw", 6));
         } else {
-            items.add(new CulturalMusicMainObject("questions", "questions", 5));
-            items.add(new CulturalMusicMainObject("response", "response", 6));
+            items.add(new CulturalMusicMainObject("questions", "questions", 7));
+            items.add(new CulturalMusicMainObject("response", "response", 8));
         }
         return items;
     }
 
     @Override
     public void onItemClicked(CulturalMusicMainObject culturalMusicMainObject, int position) {
+        FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.from_right,
+                R.anim.to_left, R.anim.from_left, R.anim.to_right);
+        if (culturalMusicMainObject.getCategory() > 5) {
+            fragmentTransaction.replace(R.id.frameLayout, new VideoFragment()).commit();
+        } else {
+            fragmentTransaction.replace(R.id.frameLayout, CulturalMusicFragment.newInstance(culturalMusicMainObject.getName(), culturalMusicMainObject.getCategory())).commit();
+        }
 
     }
 }

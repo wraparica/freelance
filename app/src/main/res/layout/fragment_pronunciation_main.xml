@@ -53,26 +53,26 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:src="@drawable/shapes" />
+                tools:src="@drawable/shapes_" />
             <ImageView
                 android:id="@+id/colors"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:src="@drawable/colors_p" />
+                tools:src="@drawable/colors_" />
 
             <ImageView
                 android:id="@+id/bodyParts"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:src="@drawable/bodyparts" />
+                tools:src="@drawable/body_parts_" />
             <ImageView
                 android:id="@+id/numbers"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                tools:src="@drawable/numbers_p" />
+                tools:src="@drawable/numbers_" />
 
 
         </LinearLayout>

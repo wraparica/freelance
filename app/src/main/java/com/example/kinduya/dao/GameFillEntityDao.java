@@ -48,7 +48,7 @@ public interface GameFillEntityDao {
             "(21,'DA_ANGHITA','ORANGE','R','orange','DARANGHITA')," +
             "(22,'UBI_ON','PURPLE','H','purple','UBIHON')," +
             "(23,'TAB_NAN','BROWN','O','brown','TABONAN')," +
-            "(24,'_UNHAW','GREEN','I','green','IUNHAW')," +
+            "(24,'_UNHAW','GREEN','I','green','LUNHAW')," +
             "(25, '_BUHON','GRAY',  'A', 'gray', 'ABUHON'), " +
 
             "(26, 'INI_LOG','OBLONG',  'T', 'oblong', 'INITLOG'), " +
