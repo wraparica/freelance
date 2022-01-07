@@ -67,10 +67,10 @@ public interface AppDataDao {
             "('IUNHAW', 'GREEN', 2, 'green', 'The grass is color green', 'Yang sagbot kay lunhaw.', 'iunhaw', 'green', 'green_phrases', 'lunhaw_phrases')," +
             "('ABUHON', 'GRAY', 2, 'gray', 'My dog is gray', 'Kanak edo kay abuhon.', 'abuhon', 'gray', 'gray_phrases', 'abuhon_phrases')," +
             // BODY PARTS
-            "('ILONG', 'NOSE', 3, 'nose_ilong', 'My nose itches', 'Kanak ilong kay katulay', 'ilong', 'nose', 'nose.phrases', 'ilong_phrases')," +
+            "('ILONG', 'NOSE', 3, 'nose_ilong', 'My nose itches', 'Kanak ilong kay katulay', 'ilong', 'nose', 'nose_phrases', 'ilong_phrases')," +
             "('DILA', 'TONGUE', 3, 'tongue_dila', 'I bit my tongue', 'Ya kagat ko kanak dila.', 'dila', 'tongue', 'tongue_phrases', 'dila_phrases')," +
             "('BAYHO', 'FACE', 3, 'face_bayho', 'My face shape is look like my mom', 'Kanak bayho amo ng bayho ng kana kina.', 'bayho', 'face', 'face_phrases', 'bayho_phrases')," +
-            "('SIKI', 'FEET', 3, 'feet_siki', 'Wash your feet', 'Hugasi yang kanmo siki.', '', 'feet', 'feet_phrases', 'siki_phrases')," +
+            "('SIKI', 'FEET', 3, 'feet_siki', 'Wash your feet', 'Hugasi yang kanmo siki.', 'siki', 'feet', 'feet_phrases', 'siki_phrases')," +
             "('MATA', 'EYES', 3, 'eye_mata', 'The baby has a beautiful eyes', 'Yang isu gandahay Kanaan mata.', 'mata', 'eyes', 'eyes_phrases', 'mata_phrases')," +
             "('UNTO', 'TEETH ', 3, 'teeth_unto', 'I brush my teeth two times a day', 'Pyaga sipilyohan ko kanak unto duha ka bisis sa usa ka adlwa.', 'unto', 'teeth', 'teeth_phrases', 'unto_phrases') ," +
             "('TUDLO', 'FINGERS ', 3, 'fingers_tudlo', 'He tapped his finger on the pipe', 'Gi sangsangan ng usog yag Kanaan tudlo sang tubo.', 'tudlo', 'fingers', 'finger_phrases', 'tudlo_phrases') ," +
@@ -83,10 +83,10 @@ public interface AppDataDao {
             "('TUL-LU', 'ARM', 3, 'arm_tullu', 'My friend pinched me on the arm', 'Kanank amigo e kusi kanak tul-lu.', 'tullu', 'arm', 'arm_phrases', 'tullu_phrases')," +
             "('KILAY', 'EYEBROWS', 3, 'eyebrows_kilay', 'Jessi raised her eyebrows', 'Si Jessi kay yaga tindug yaang kilay.', 'kilay', 'eyebrows', 'eyebrows_phrases', 'kilay_phrases')," +
             "('LUGAY', 'HAIR', 3, 'hair_lugay', 'I have a long and black hair', 'Kanak mataasay na lugay kay itumay.', 'lugay', 'hair', 'hair_phrases', 'lugay_phrases')," +
-            "('KASINGKASING', 'HEART', 3, 'heart_kasingkasing', 'My heart began to beat fast.', 'Kanak kasingkasing kay yaga ginhawa sang lalumay.', '', 'heart', 'heart_phrases', 'kasingkasing_phrases')," +
+            "('KASINGKASING', 'HEART', 3, 'heart_kasingkasing', 'My heart began to beat fast.', 'Kanak kasingkasing kay yaga ginhawa sang lalumay.', 'kasinkasing', 'heart', 'heart_phrases', 'kasingkasing_phrases')," +
             "('UMO', 'GUMS', 3, 'gums_umo', 'I have gum in my mouth', 'Awo umo sang kanak baba.', 'umo', 'gums', 'gums_phrases', 'umo_phrases')," +
             "('SIKO', 'ELBOW', 3, 'elbow_siko', 'I hurt my elbow', 'Masakitay kanak siko.', 'siko', 'elbow', 'elbow_phrases', 'siko_phrases')," +
-            "('PISNGI', 'CHEEK', 3, 'cheek_pisngi', 'A tear ran down Mona’s cheek', 'Yaga tiyaho si Moan daigay luha sang Kanaan pisngi.', '', '', 'cheek_phrases', 'pisngi_phrases')," +
+            "('PISNGI', 'CHEEK', 3, 'cheek_pisngi', 'A tear ran down Mona’s cheek', 'Yaga tiyaho si Moan daigay luha sang Kanaan pisngi.', 'pisngi', 'cheek', 'cheek_phrases', 'pisngi_phrases')," +
             "('PUSA', 'BONE', 3, 'bone_pusa', 'My grandfather has brittle bones', 'Kanak umpo nga usog kay adunay marmol sang pusa.', 'pusa', 'bone', 'bones_phrases', 'pusa_phrases')," +
             "('BAGAKWANG', 'HIPS', 3, 'hips_bagakwang', 'Lina ask my sister about her hips size', 'Yaga pangutana si Lina sang Kanaan lumon kung unan kuno kadak-on Kanaan bagakwang.', 'bagakwang', 'hips', 'hips_phrases', 'bagakwang_phrases')," +
             "('PILOK', 'EYELASHES', 3, 'eyelashes_pilok', 'Noticed my eyelashes, long and thick', 'Pag kahibaw ko kanak pilok mataasay da ug bagaay.', 'pilok', 'eyelashes', 'eyelashes_phrases', 'pilok_phrases')," +
@@ -99,7 +99,7 @@ public interface AppDataDao {
             "('O', 'HEAD', 3, 'head_o', 'My head aches', 'Kanak O kay masakitay.', 'o', 'head', 'head_phrases', 'o_phrases')," +
             "('BAGA', 'LUNGS', 3, 'lungs_baga', 'Cold air made my lungs ache', 'Matugnaway yang buga ng hangin sang kanak baga amo ga sakit.', 'baga', 'lungs', 'lungs_phrases', 'baga_phrases')," +
             "('ABI', 'LIPS', 3, 'lips_abi', 'I bit my lip', 'Ya kagat ko kanak abi.', 'abi', 'lips', 'lip_phrases', 'abi_phrases')," +
-            "('KUKU ', 'CHIN', 3, 'chin_kuku', 'He lifted her chin with one finger', 'He lifted her chin with one finger', 'kuku', 'chin', '', '')," +
+            "('KUKU ', 'CHIN', 3, 'chin_kuku', 'He lifted her chin with one finger', 'Gi alsa naan ang Kuku gamit usa ka tudlo', 'kuku', 'chin', 'chin_phrases', 'kuku_phrases')," +
             // NUMBERS
             "('ISA', 'ONE', 4, 'one', 'I have one dog named brownie', 'Awon isa ka edo ko na pangan kay brownie', 'isa', 'one','i_have_one_dog_named_brownie_one', 'awon_isa_ka_edo_konapangankay_bronie_one')," +
             "('DUWA', 'TWO', 4, 'two', 'Sarah buy two candies', 'Si Sara ga palit ng duwa ka kendi.', 'duwa', 'two', 'sarah_buy_two_candies_two', 'si_sara_ga_palit_ng_duwa_ka_kendi_two')," +

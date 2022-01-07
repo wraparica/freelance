@@ -24,13 +24,16 @@
         <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/layout/fragment_vocabulary_menu.xml" value="0.29583333333333334" />
         <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/layout/fragment_vocabulary_phrases.xml" value="0.29583333333333334" />
         <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/layout/fragment_vocabulary_phrases_translation.xml" value="0.29583333333333334" />
+        <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/layout/fragment_vocabulary_words.xml" value="0.2734375" />
         <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/layout/fragment_vocabulary_words_menu.xml" value="0.29583333333333334" />
         <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/layout/fragment_vocabulary_words_translation.xml" value="0.29583333333333334" />
         <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/layout/game_complete_dialog.xml" value="0.29583333333333334" />
         <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/layout/game_fill_choices.xml" value="0.29583333333333334" />
         <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/layout/highscore_layout.xml" value="0.29583333333333334" />
+        <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/layout/terms_and_condition_dialog.xml" value="0.26875" />
         <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/layout/vocabulary_layout.xml" value="0.29583333333333334" />
         <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/layout/vocabulary_words_menu_layout.xml" value="0.29583333333333334" />
+        <entry key="..\:/Users/William/AndroidStudioProjects/kinduya/app/src/main/res/xml/terms_and_condition.xml" value="0.26875" />
         <entry key="app/src/main/res/drawable-v24/back_image.xml" value="0.20260416666666667" />
         <entry key="app/src/main/res/drawable-v24/bg_circle.xml" value="0.3765625" />
         <entry key="app/src/main/res/drawable-v24/book.xml" value="0.21770833333333334" />

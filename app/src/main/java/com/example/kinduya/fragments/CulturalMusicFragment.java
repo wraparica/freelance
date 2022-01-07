@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.kinduya.MainActivity;
 import com.example.kinduya.R;
 
@@ -28,8 +29,8 @@ public class CulturalMusicFragment extends Fragment {
     TextView txtsname, txtstart, txtsstop;
     SeekBar seekmusic;
 
-    ImageView back;
-    String name;
+    ImageView back, imgView;
+    String name, image;
     static MediaPlayer mediaPlayer;
     int position;
     int category;
@@ -37,11 +38,13 @@ public class CulturalMusicFragment extends Fragment {
 
     private static final String ARG_CATEGORY = "category";
     private static final String ARG_NAME = "name";
-    public static CulturalMusicFragment newInstance(String name, int category) {
+    private static final String ARG_IMAGE = "image";
+    public static CulturalMusicFragment newInstance(String name, int category, String image) {
         CulturalMusicFragment fragment = new CulturalMusicFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_CATEGORY, category);
         args.putString(ARG_NAME, name);
+        args.putString(ARG_IMAGE, image);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,6 +54,7 @@ public class CulturalMusicFragment extends Fragment {
         if (getArguments() != null) {
             category = getArguments().getInt(ARG_CATEGORY);
             name = getArguments().getString(ARG_NAME);
+            image = getArguments().getString(ARG_IMAGE);
         }
     }
 
@@ -71,6 +75,7 @@ public class CulturalMusicFragment extends Fragment {
         txtsstop = v.findViewById(R.id.txtsstop);
         seekmusic = v.findViewById(R.id.seekbar);
         back = v.findViewById(R.id.back);
+        imgView = v.findViewById(R.id.imgview);
         back.setOnClickListener(view -> back());
 
         if (mediaPlayer != null) {
@@ -115,7 +120,7 @@ public class CulturalMusicFragment extends Fragment {
             default:
                 throw new IllegalStateException("Unexpected value: " + category);
         }
-
+        Glide.with(this).load(getImage(image)).into(imgView);
         txtsname.setText(name);
         mediaPlayer = MediaPlayer.create(requireContext(), uri);
         MainActivity.pauseBg();
@@ -223,6 +228,10 @@ public class CulturalMusicFragment extends Fragment {
         }
         time+=sec;
         return time;
+    }
+
+    public int getImage(String imageName) {
+        return this.getResources().getIdentifier(imageName, "drawable", requireContext().getPackageName());
     }
 
 

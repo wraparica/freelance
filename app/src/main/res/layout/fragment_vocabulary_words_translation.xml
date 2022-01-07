@@ -40,7 +40,7 @@
                 android:layout_gravity="center"
                 android:paddingBottom="10dp"
                 android:scaleType="fitXY"
-                tools:src="@drawable/vocabulary_translation" />
+                tools:src="@drawable/vocabularyparts" />
 
             <LinearLayout
                 android:layout_width="match_parent"

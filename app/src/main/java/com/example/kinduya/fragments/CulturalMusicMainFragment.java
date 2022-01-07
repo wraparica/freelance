@@ -29,7 +29,7 @@ public class CulturalMusicMainFragment extends Fragment implements CulturalMusic
     KinduyaDatabase kinduyaDatabase;
     RecyclerView rvVocabularyWords;
     CulturalMusicMainAdapter adapter;
-    ImageView back;
+    ImageView back, video, mus;
     int category, position;
     boolean music;
 
@@ -58,6 +58,8 @@ public class CulturalMusicMainFragment extends Fragment implements CulturalMusic
     @Override
     public void onViewCreated(@NonNull View v, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(v, savedInstanceState);
+
+
         rvVocabularyWords = v.findViewById(R.id.rvMenu);
         kinduyaDatabase = KinduyaDatabase.getInstance(requireContext());
 
@@ -67,7 +69,15 @@ public class CulturalMusicMainFragment extends Fragment implements CulturalMusic
         adapter.submitList(populateItems(music));
         rvVocabularyWords.scrollToPosition(position);
         back = v.findViewById(R.id.back);
+        video = v.findViewById(R.id.vid);
+        mus = v.findViewById(R.id.mus);
         back.setOnClickListener(view -> back());
+
+        if (music){
+            video.setVisibility(View.GONE);
+        } else {
+            mus.setVisibility(View.GONE);
+        }
     }
 
     private void back(){
@@ -87,8 +97,8 @@ public class CulturalMusicMainFragment extends Fragment implements CulturalMusic
             items.add(new CulturalMusicMainObject("Oh Budi", "oh_budi", 5));
             items.add(new CulturalMusicMainObject("Olo Adon Pa Kaw", "olo_adon_pa_kaw", 6));
         } else {
-            items.add(new CulturalMusicMainObject("questions", "questions", 7));
-            items.add(new CulturalMusicMainObject("response", "response", 8));
+            items.add(new CulturalMusicMainObject("Cultural Dance", "culturaldance", 7));
+            items.add(new CulturalMusicMainObject("Mandaya Trivia", "mandayatrivia", 8));
         }
         return items;
     }
@@ -99,9 +109,9 @@ public class CulturalMusicMainFragment extends Fragment implements CulturalMusic
         fragmentTransaction.setCustomAnimations(R.anim.from_right,
                 R.anim.to_left, R.anim.from_left, R.anim.to_right);
         if (culturalMusicMainObject.getCategory() > 5) {
-            fragmentTransaction.replace(R.id.frameLayout, new VideoFragment()).commit();
+            fragmentTransaction.replace(R.id.frameLayout, VideoFragment.newInstance(culturalMusicMainObject.getCategory())).commit();
         } else {
-            fragmentTransaction.replace(R.id.frameLayout, CulturalMusicFragment.newInstance(culturalMusicMainObject.getName(), culturalMusicMainObject.getCategory())).commit();
+            fragmentTransaction.replace(R.id.frameLayout, CulturalMusicFragment.newInstance(culturalMusicMainObject.getName(), culturalMusicMainObject.getCategory(), culturalMusicMainObject.getImage())).commit();
         }
 
     }
