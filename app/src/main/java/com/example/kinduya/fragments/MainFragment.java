@@ -87,6 +87,14 @@ public class MainFragment extends Fragment {
             fragmentTransaction.replace(R.id.frameLayout, CulturalMusicMainFragment.newInstance(false)).commit();
 
         });
+
+        speech_to_speech.setOnClickListener(view -> {
+            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.from_right,
+                    R.anim.to_left, R.anim.from_left, R.anim.to_right);
+            fragmentTransaction.replace(R.id.frameLayout, SpeechToSpeechFragment.newInstance()).commit();
+
+        });
     }
 
     public int getImage(String imageName) {
