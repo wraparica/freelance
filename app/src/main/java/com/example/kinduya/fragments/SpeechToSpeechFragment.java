@@ -147,7 +147,6 @@ public class SpeechToSpeechFragment extends Fragment implements EasyPermissions.
                     progress_circular.setVisibility(View.GONE);
                     speech.setEnabled(true);
                     MainActivity.playBg();
-                    mediaPlayer.stop();
                 }
 
             }

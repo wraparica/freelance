@@ -51,7 +51,7 @@ public class MainFragment extends Fragment {
         Glide.with(this).load(getImage("vocabulary_1")).into(vocabulary);
         Glide.with(this).load(getImage("songs_1")).into(music);
         Glide.with(this).load(getImage("game_1")).into(game);
-        Glide.with(this).load(getImage("speech_to_speech_1")).into(speech_to_speech);
+        Glide.with(this).load(getImage("speech_to_speech_n")).into(speech_to_speech);
         game.setOnClickListener(view -> {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.from_right,
