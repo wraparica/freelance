@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.speech.RecognitionListener;
 import android.speech.RecognizerIntent;
@@ -47,7 +48,6 @@ public class SpeechToSpeechFragment extends Fragment implements EasyPermissions.
     ImageView back, speech, translation;
     SpeechRecognizer speechRecognizer;
     TextView tvTranslation, tvsaid;
-    ProgressBar progress_circular;
     private static final int REQUEST_PERMISSION_CODE = 0;
     int count = 0;
     static MediaPlayer mediaPlayer;
@@ -86,22 +86,30 @@ public class SpeechToSpeechFragment extends Fragment implements EasyPermissions.
         translation = v.findViewById(R.id.translation);
         tvTranslation = v.findViewById(R.id.tvtranslation);
         tvsaid = v.findViewById(R.id.tvsaid);
-        progress_circular = v.findViewById(R.id.progress_circular);
         back = v.findViewById(R.id.back);
         back.setOnClickListener(view -> back());
-        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext());
+
         Intent speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
 
         if (mediaPlayer != null) {
             mediaPlayer.stop();
             mediaPlayer.release();
         }
+        speechRecognizer = SpeechRecognizer.createSpeechRecognizer(requireContext());
         speech.setOnClickListener(view -> {
-            progress_circular.setVisibility(View.VISIBLE);
             speech.setEnabled(false);
             MainActivity.pauseBg();
             speechRecognizer.startListening(speechRecognizerIntent);
-            new Handler().postDelayed(() -> speechRecognizer.stopListening(), 500);
+            new CountDownTimer(1000, 1000) {
+
+                public void onTick(long millisUntilFinished) {
+                    //do nothing, just let it tick
+                }
+
+                public void onFinish() {
+                    speechRecognizer.stopListening();
+                }   }.start();
+            //new Handler().postDelayed(() -> speechRecognizer.stopListening(), 500);
         });
 
         Glide.with(this).load(getImage("saysomething")).into(speech);
@@ -134,17 +142,24 @@ public class SpeechToSpeechFragment extends Fragment implements EasyPermissions.
 
             @Override
             public void onError(int i) {
-
+                Log.i("SPEECH", "FAILED " + i);
+                Toast.makeText(getActivity(), "You did not speak", Toast.LENGTH_SHORT).show();
+                speech.setEnabled(true);
+                MainActivity.playBg();
             }
 
             @Override
             public void onResults(Bundle bundle) {
                 ArrayList<String> data = bundle.getStringArrayList(speechRecognizer.RESULTS_RECOGNITION);
+                if (data.isEmpty()){
+                    Toast.makeText(getActivity(), "You did not speak", Toast.LENGTH_SHORT).show();
+                    speech.setEnabled(true);
+                    MainActivity.playBg();
+                }
                 if(kinduyaDatabase.speechToSpeechDao().checkIfWithResult(data.get(0))){
                     playRecording(kinduyaDatabase.speechToSpeechDao().getSpeechToSpeechByEnglish(data.get(0)), true);
                 } else {
                     Toast.makeText(getActivity(), "No data found with " + data.get(0), Toast.LENGTH_SHORT).show();
-                    progress_circular.setVisibility(View.GONE);
                     speech.setEnabled(true);
                     MainActivity.playBg();
                 }
@@ -165,7 +180,6 @@ public class SpeechToSpeechFragment extends Fragment implements EasyPermissions.
 
     private void playRecording(SpeechToSpeechEntity speech, boolean english){
         if (english) {
-            progress_circular.setVisibility(View.GONE);
             tvTranslation.setText(speech.getMandaya().toUpperCase(Locale.ROOT));
             tvsaid.setText(speech.getEnglish().toUpperCase(Locale.ROOT));
             Resources res = getResources();
@@ -184,7 +198,10 @@ public class SpeechToSpeechFragment extends Fragment implements EasyPermissions.
     }
 
     private void back(){
-        mediaPlayer.stop();
+        if (mediaPlayer!=null){
+            mediaPlayer.stop();
+        }
+
         FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.from_left,
                 R.anim.to_right, R.anim.from_right, R.anim.to_left);
