@@ -302,7 +302,13 @@ public interface AppDataDao {
             "('', '', 51, '', 'Yes, let’s go so we can return soon, because we have somewhere else to go', 'U, unda kita manaw antak makabalik kita dayun kay awn pay adtuan ta', '', '', '', '')," +
             "('', '', 51, '', 'You really know how to cook', 'Madi yaw kaw magluto', '', '', '', '')," +
             "('', '', 51, '', 'I’ll be going home now', 'Un an ka muli', '', '', '', '')," +
-            "('', '', 51, '', 'Yes, I’ll certainly comeback', 'Ako gayd tumangag', '', '', '', '')"
+            "('', '', 51, '', 'Yes, I’ll certainly comeback', 'Ako gayd tumangag', '', '', '', ''), " +
+
+            "('', 'level one', 52, '', '', '', '', 'level_one', '', '')," +
+            "('', 'level two', 52, '', '', '', '', 'level_two', '', '')," +
+            "('', 'level three', 52, '', '', 'i', '', 'level_three', '', '')," +
+            "('', 'try again', 52, '', '', '', '', 'try_again', '', '')," +
+            "('', 'congratulations', 52, '', '', '', '', 'congratulations', '', '')"
 
     )
     void insert();
@@ -319,5 +325,11 @@ public interface AppDataDao {
 
     @Query("SELECT * FROM app_data WHERE id = :id")
     AppDataEntity getAppDataById(long id);
+
+    @Query("SELECT * FROM app_data WHERE english = :english")
+    AppDataEntity getAppDataByEnglish(String english);
+
+    @Query("SELECT * FROM app_data where category = :category AND english != :english ORDER BY RANDOM() LIMIT 3")
+    List<AppDataEntity> getRandomChoices(long category, String english);
 
 }

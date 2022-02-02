@@ -7,11 +7,13 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.kinduya.dao.AppDataDao;
+import com.example.kinduya.dao.FallingObjectGameDao;
 import com.example.kinduya.dao.GameFillChoicesDao;
 import com.example.kinduya.dao.GameFillEntityDao;
 import com.example.kinduya.dao.HighscoreDao;
 import com.example.kinduya.dao.SpeechToSpeechDao;
 import com.example.kinduya.entities.AppDataEntity;
+import com.example.kinduya.entities.FallingObjectGameEntity;
 import com.example.kinduya.entities.GameFillChoicesEntity;
 import com.example.kinduya.entities.GameFillEntity;
 import com.example.kinduya.entities.HighscoreEntity;
@@ -21,6 +23,7 @@ import com.example.kinduya.entities.SpeechToSpeechEntity;
         GameFillChoicesEntity.class,
         HighscoreEntity.class,
         AppDataEntity.class,
+        FallingObjectGameEntity.class,
         SpeechToSpeechEntity.class},
         version = 1,
         exportSchema = true)
@@ -39,4 +42,5 @@ public abstract class KinduyaDatabase extends RoomDatabase {
     public abstract HighscoreDao highscoreDao();
     public abstract AppDataDao appDataDao();
     public abstract SpeechToSpeechDao speechToSpeechDao();
+    public abstract FallingObjectGameDao fallingObjectGameDao();
 }

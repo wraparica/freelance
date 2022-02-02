@@ -31,9 +31,22 @@ public class HighscoreFragment extends Fragment {
     RecyclerView highscores;
     HighscoreAdapter adapter;
     ImageView back;
+    boolean fallingObject;
+    private static final String ARG_IS_FALLING_OBJECT = "ARG_IS_FALLING_OBJECT";
+    public static HighscoreFragment newInstance(boolean fallingObject) {
+        HighscoreFragment fragment = new HighscoreFragment();
+        Bundle args = new Bundle();
+        args.putBoolean(ARG_IS_FALLING_OBJECT, fallingObject);
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            fallingObject = getArguments().getBoolean(ARG_IS_FALLING_OBJECT);
+        }
     }
 
     @Override
@@ -50,7 +63,8 @@ public class HighscoreFragment extends Fragment {
         back = view.findViewById(R.id.back);
         back.setOnClickListener(v -> back());
         adapter = new HighscoreAdapter();
-        List<HighscoreEntity> data = kinduyaDatabase.highscoreDao().getHighscores();
+        int game = fallingObject ? 0 : 1;
+        List<HighscoreEntity> data = kinduyaDatabase.highscoreDao().getHighscoresByGame(game);
         adapter.submitList(data);
         highscores.setLayoutManager(new LinearLayoutManager(requireContext()));
         highscores.setAdapter(adapter);
@@ -59,6 +73,10 @@ public class HighscoreFragment extends Fragment {
         FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.from_left,
                 R.anim.to_right, R.anim.from_right, R.anim.to_left);
-        fragmentTransaction.replace(R.id.frameLayout, new GameMenuFragment()).commit();
+        if(fallingObject) {
+            fragmentTransaction.replace(R.id.frameLayout, new FallingObjectsGameMainFragment()).commit();
+        } else {
+            fragmentTransaction.replace(R.id.frameLayout, new GameMenuFragment()).commit();
+        }
     }
 }

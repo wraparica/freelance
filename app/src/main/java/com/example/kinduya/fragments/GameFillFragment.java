@@ -182,7 +182,8 @@ public class GameFillFragment extends Fragment {
                     highscoreLayout.setHelperTextEnabled(false);
                     HighscoreEntity highscoreEntity = new HighscoreEntity(
                             name,
-                            score
+                            score,
+                            1
                             );
                     kinduyaDatabase.highscoreDao().upsert(highscoreEntity);
                     dialog.dismiss();

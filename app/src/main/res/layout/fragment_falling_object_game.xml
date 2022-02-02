@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/falling_object_bg_game">
+
+    <RelativeLayout
+        android:id="@+id/logo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <ImageView
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/button_back" />
+
+        <TextView
+            android:id="@+id/questionCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:textColor="@color/black"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:text="20/20" />
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/test1"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/color_orange" />
+
+    <ImageView
+        android:id="@+id/test2"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/color_red" />
+
+    <ImageView
+        android:id="@+id/test3"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/color_blue" />
+
+    <ImageView
+        android:id="@+id/test4"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/color_black" />
+
+    <ImageView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/orange_falling" />
+</RelativeLayout>

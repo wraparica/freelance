@@ -31,8 +31,8 @@ public interface HighscoreDao {
             "(4, 'C A _', 'T', 'cat', 'C A T') ")
     void insert();
 
-    @Query("SELECT * FROM highschore ORDER BY score DESC")
-    List<HighscoreEntity> getHighscores();
+    @Query("SELECT * FROM highschore WHERE game = :game ORDER BY score DESC")
+    List<HighscoreEntity> getHighscoresByGame(int game);
 
     @Query("SELECT * FROM game_fill LIMIT 20")
     LiveData<List<GameFillEntity>> getLiveQuestions();

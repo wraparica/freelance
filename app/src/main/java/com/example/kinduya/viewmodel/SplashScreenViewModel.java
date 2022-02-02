@@ -23,6 +23,7 @@ public class SplashScreenViewModel extends ViewModel {
         db.gameFillEntityDao().insert();
         db.gameFillChoicesDao().insert();
         db.speechToSpeechDao().insert();
+        db.fallingObjectGameDao().insert();
 
     }
 }

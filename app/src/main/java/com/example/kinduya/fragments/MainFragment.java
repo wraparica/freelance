@@ -56,14 +56,13 @@ public class MainFragment extends Fragment {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.from_right,
                     R.anim.to_left, R.anim.from_left, R.anim.to_right);
-            fragmentTransaction.replace(R.id.frameLayout, new GameMenuFragment()).commit();
+            fragmentTransaction.replace(R.id.frameLayout, new GamesMainMenuFragment()).commit();
         });
-        vocabulary.setOnClickListener(view -> {
-            getParentFragmentManager().beginTransaction()
-            .setCustomAnimations(R.anim.from_right,
-                    R.anim.to_left, R.anim.from_left, R.anim.to_right)
-            .replace(R.id.frameLayout, new VocabularyMenuFragment()).commit();
-        });
+        vocabulary.setOnClickListener(view -> getParentFragmentManager().beginTransaction()
+        .setCustomAnimations(R.anim.from_right,
+                R.anim.to_left, R.anim.from_left, R.anim.to_right)
+        .replace(R.id.frameLayout, new VocabularyMenuFragment()).commit());
+
         pronunciation.setOnClickListener(view -> {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.from_right,

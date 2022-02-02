@@ -22,10 +22,14 @@ public class HighscoreEntity {
     @ColumnInfo(name = "score")
     private int score;
 
+    @ColumnInfo(name = "game")
+    private int game;
 
-    public HighscoreEntity(String name, int score) {
+
+    public HighscoreEntity(String name, int score, int game) {
         this.name = name;
         this.score = score;
+        this.game = game;
     }
 
     @Ignore
@@ -34,6 +38,7 @@ public class HighscoreEntity {
         public boolean areItemsTheSame(@NonNull HighscoreEntity oldItem, @NonNull HighscoreEntity newItem) {
             return Objects.equals(oldItem.id, newItem.id)
                     && Objects.equals(oldItem.score, newItem.score)
+                    && Objects.equals(oldItem.game, newItem.game)
                     && Objects.equals(oldItem.name, newItem.name);
         }
 
@@ -41,6 +46,7 @@ public class HighscoreEntity {
         public boolean areContentsTheSame(@NonNull HighscoreEntity oldItem, @NonNull HighscoreEntity newItem) {
             return Objects.equals(oldItem.id, newItem.id)
                     && Objects.equals(oldItem.score, newItem.score)
+                    && Objects.equals(oldItem.game, newItem.game)
                     && Objects.equals(oldItem.name, newItem.name);
         }
     };
@@ -67,5 +73,13 @@ public class HighscoreEntity {
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public int getGame() {
+        return score;
+    }
+
+    public void setGame(int game) {
+        this.game = game;
     }
 }
