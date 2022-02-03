@@ -76,7 +76,7 @@ public class HighscoreEntity {
     }
 
     public int getGame() {
-        return score;
+        return game;
     }
 
     public void setGame(int game) {

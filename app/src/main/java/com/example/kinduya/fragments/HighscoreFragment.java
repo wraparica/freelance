@@ -64,7 +64,14 @@ public class HighscoreFragment extends Fragment {
         back.setOnClickListener(v -> back());
         adapter = new HighscoreAdapter();
         int game = fallingObject ? 0 : 1;
+        Log.d("game", String.valueOf(game));
         List<HighscoreEntity> data = kinduyaDatabase.highscoreDao().getHighscoresByGame(game);
+        List<HighscoreEntity> data1 = kinduyaDatabase.highscoreDao().getHighscores();
+        for(HighscoreEntity d : data1){
+            Log.d("gam1e", d.getName());
+            Log.d("game1", String.valueOf(d.getScore()));
+            Log.d("game1", String.valueOf(d.getGame()));
+        }
         adapter.submitList(data);
         highscores.setLayoutManager(new LinearLayoutManager(requireContext()));
         highscores.setAdapter(adapter);

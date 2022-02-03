@@ -118,13 +118,53 @@ public class FallingObjectGameFragment extends Fragment {
 
     }
 
-    private void playRecording(String file){
+    private void playRecording(String file,boolean title, boolean game, int count, List<FallingObjectGameEntity> questions, boolean answer){
+            timer.cancel();
+            timer.purge();
+            timer = new Timer();
             Resources res = getResources();
             int sound = res.getIdentifier(file, "raw", requireActivity().getPackageName());
             mediaPlayer = MediaPlayer.create(requireContext(), sound);
             MainActivity.pauseBg();
             mediaPlayer.start();
-            mediaPlayer.setOnCompletionListener(MediaPlayer::stop);
+            mediaPlayer.setOnCompletionListener(mediaPlayer -> {
+
+                mediaPlayer.stop();
+                if (file.equals("try_again")){
+                    return;
+                }
+                if (title) {
+                    setupQuestions(count, questions);
+                }
+                if (answer){
+                    setup(count+1, questions);
+                }
+                if (game){
+                    if (count >= 0 && count <=5){
+                        timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                handler.post(() -> changePos());
+                            }
+                        }, 0, 25);
+                    }else if (count <= 10 && count >=6){
+                        timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                handler.post(() -> changePos());
+                            }
+                        }, 0, 20);
+                    } else if (count >= 11){
+                        timer.schedule(new TimerTask() {
+                            @Override
+                            public void run() {
+                                handler.post(() -> changePos());
+                            }
+                        }, 0, 15);
+                    }
+
+                }
+            });
     }
 
     private void setup(int count, List<FallingObjectGameEntity> questions){
@@ -132,73 +172,61 @@ public class FallingObjectGameFragment extends Fragment {
         String questionCountStr = score + " / " + questions.size();
         questionCountText.setText(questionCountStr);
         if (count == 0){
-            playRecording("level_one");
+            playRecording("level_one", true,false, 0, questions, false);
             showDialog("level_one__falling");
 
             final Handler handler  = new Handler();
             final Runnable runnable = () -> {
                 if (dialog.isShowing()) {
                     dialog.dismiss();
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            handler.post(() -> changePos());
-                        }
-                    }, 0, 25);
                 }
             };
-            handler.postDelayed(runnable, 2000);
+            handler.postDelayed(runnable, 1000);
 
         }
 
-        if (count == 5){
-            timer.cancel();
-            timer = new Timer();
-            playRecording("level_two");
+        else if (count == 5){
+
+            playRecording("level_two", true, false, 5, questions, false);
             showDialog("level_two_falling");
 
             final Handler handler  = new Handler();
             final Runnable runnable = () -> {
                 if (dialog.isShowing()) {
                     dialog.dismiss();
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            handler.post(() -> changePos());
-                        }
-                    }, 0, 20);
                 }
             };
             handler.postDelayed(runnable, 2000);
 
         }
-        if (count == 10){
-            timer.cancel();
-            timer = new Timer();
-            playRecording("level_three");
+        else if (count == 10){
+
+            playRecording("level_three", true, false, 10, questions, false);
             showDialog("level_three__falling");
             final Handler handler  = new Handler();
             final Runnable runnable = () -> {
                 if (dialog.isShowing()) {
                     dialog.dismiss();
-                    timer.schedule(new TimerTask() {
-                        @Override
-                        public void run() {
-                            handler.post(() -> changePos());
-                        }
-                    }, 0, 15);
                 }
             };
             handler.postDelayed(runnable, 2000);
         }
-        if (count >= 15) {
-            timer.cancel();
-            timer.purge();
-            playRecording("congratulations");
+        else if (count >= 15) {
+
+            playRecording("congratulations", true, false, 0, questions, false);
             showDialog("congratulations_falling");
             dismissDialog(true);
             return;
+        } else {
+            setupQuestions(count, questions);
         }
+
+
+
+    }
+    private void setupQuestions(int count, List<FallingObjectGameEntity> questions){
+        restartPos();
+        changePos();
         FallingObjectGameEntity question = questions.get(count);
         List<AppDataEntity> choices = kinduyaDatabase.appDataDao().getRandomChoices(question.getCategory(), question.getAnswer());
         AppDataEntity answer = kinduyaDatabase.appDataDao().getAppDataByEnglish(question.getAnswer());
@@ -207,26 +235,30 @@ public class FallingObjectGameFragment extends Fragment {
 
         Glide.with(this).load(getImage(choices.get(0).getImage())).into(test1);
         Log.d("choices1", choices.get(0).getEnglish());
+        Log.d("choices1", choices.get(0).getImage());
         Glide.with(this).load(getImage(choices.get(1).getImage())).into(test2);
         Log.d("choices2", choices.get(1).getEnglish());
+        Log.d("choices2", choices.get(1).getImage());
         Glide.with(this).load(getImage(choices.get(2).getImage())).into(test3);
         Log.d("choices3", choices.get(2).getEnglish());
+        Log.d("choices3", choices.get(2).getImage());
         Glide.with(this).load(getImage(choices.get(3).getImage())).into(test4);
         Log.d("choices4", choices.get(3).getEnglish());
+        Log.d("choices4", choices.get(3).getImage());
         Glide.with(this).load(getImage(question.getImage())).into(this.question);
         AppDataEntity appdata = kinduyaDatabase.appDataDao().getAppDataByEnglish(question.getAnswer());
-        playRecording(appdata.getEnglish_recording());
+
+        //vString file, boolean game, int interval, int count, List<FallingObjectGameEntity> questions
+        playRecording(appdata.getEnglish_recording(),false, true, count, questions, false);
 
         test1.setOnClickListener(view -> {
             if (choices.get(0).getEnglish().equals(question.getAnswer())){
                 score++;
-                playRecording(choices.get(0).getMandaya_recording());
-                setup(count+1, questions);
-                restartPos();
+
+                 playRecording(choices.get(0).getMandaya_recording(), false, false, count, questions, true);
             } else {
-                timer.cancel();
-                timer.purge();
-                playRecording("try_again");
+
+                playRecording("try_again", true, false, count, questions, false);
                 showDialog("try_again_kid__falling");
                 dismissDialog(false);
             }
@@ -234,13 +266,10 @@ public class FallingObjectGameFragment extends Fragment {
         test2.setOnClickListener(view -> {
             if (choices.get(1).getEnglish().equals(question.getAnswer())){
                 score++;
-                playRecording(choices.get(1).getMandaya_recording());
-                setup(count+1, questions);
-                restartPos();
+                playRecording(choices.get(1).getMandaya_recording(), false, false, count, questions, true);
             } else {
-                timer.cancel();
-                timer.purge();
-                playRecording("try_again");
+
+                playRecording("try_again", true, false, count, questions, false);
                 showDialog("try_again_kid__falling");
                 dismissDialog(false);
             }
@@ -248,13 +277,10 @@ public class FallingObjectGameFragment extends Fragment {
         test3.setOnClickListener(view -> {
             if (choices.get(2).getEnglish().equals(question.getAnswer())){
                 score++;
-                playRecording(choices.get(2).getMandaya_recording());
-                setup(count+1, questions);
-                restartPos();
+                playRecording(choices.get(2).getMandaya_recording(), false, false, count, questions, true);
             } else {
-                timer.cancel();
-                timer.purge();
-                playRecording("try_again");
+
+                playRecording("try_again", true, false, count, questions, false);
                 showDialog("try_again_kid__falling");
                 dismissDialog(false);
             }
@@ -262,13 +288,10 @@ public class FallingObjectGameFragment extends Fragment {
         test4.setOnClickListener(view -> {
             if (choices.get(3).getEnglish().equals(question.getAnswer())){
                 score++;
-                playRecording(choices.get(3).getMandaya_recording());
-                setup(count+1, questions);
-                restartPos();
+                playRecording(choices.get(3).getMandaya_recording(), false, false, count, questions, true);
             } else {
-                timer.cancel();
-                timer.purge();
-                playRecording("try_again");
+
+                playRecording("try_again", true, false, count, questions, false);
                 showDialog("try_again_kid__falling");
                 dismissDialog(false);
             }
@@ -288,10 +311,10 @@ public class FallingObjectGameFragment extends Fragment {
         dialog.show();
     }
     private void restartPos(){
-        test1Y = screenHeight;
-        test2Y = screenHeight;
-        test3Y = screenHeight;
-        test4Y = screenHeight;
+        test1Y = screenHeight + 80.f;
+        test2Y = screenHeight + 80.f;
+        test3Y = screenHeight + 80.f;
+        test4Y = screenHeight + 80.f;
     }
     private void changePos(){
         test1Y += 10;
@@ -370,6 +393,8 @@ public class FallingObjectGameFragment extends Fragment {
         };
         handler.postDelayed(runnable, 2000);
     }
+
+
 
     private void openDialog(boolean status, int total){
 

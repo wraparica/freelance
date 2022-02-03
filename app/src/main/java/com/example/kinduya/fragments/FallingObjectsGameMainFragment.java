@@ -59,7 +59,7 @@ public class FallingObjectsGameMainFragment extends Fragment {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.from_right,
                     R.anim.to_left, R.anim.from_left, R.anim.to_right);
-            fragmentTransaction.replace(R.id.frameLayout, VocabularyWordsMenuFragment.newInstance(0, 0, null, true)).commit();
+            fragmentTransaction.replace(R.id.frameLayout, HighscoreFragment.newInstance(true)).commit();
         });
     }
 

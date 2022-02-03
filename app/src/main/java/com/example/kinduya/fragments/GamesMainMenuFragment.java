@@ -46,7 +46,7 @@ public class GamesMainMenuFragment extends Fragment {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.from_right,
                     R.anim.to_left, R.anim.from_left, R.anim.to_right);
-            fragmentTransaction.replace(R.id.frameLayout, new FallingObjectGameFragment()).commit();
+            fragmentTransaction.replace(R.id.frameLayout, new FallingObjectsGameMainFragment()).commit();
         });
 
         fill_in_the_blank.setOnClickListener(view -> {

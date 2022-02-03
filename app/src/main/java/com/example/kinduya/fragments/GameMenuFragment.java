@@ -58,7 +58,7 @@ public class GameMenuFragment extends Fragment {
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.from_right,
                     R.anim.to_left, R.anim.from_left, R.anim.to_right);
-            fragmentTransaction.replace(R.id.frameLayout, new HighscoreFragment()).commit();
+            fragmentTransaction.replace(R.id.frameLayout, HighscoreFragment.newInstance(false)).commit();
         });
 
         back.setOnClickListener(view -> back());
@@ -90,7 +90,7 @@ public class GameMenuFragment extends Fragment {
         FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
         fragmentTransaction.setCustomAnimations(R.anim.from_left,
                 R.anim.to_right, R.anim.from_right, R.anim.to_left);
-        fragmentTransaction.replace(R.id.frameLayout, new MainFragment()).commit();
+        fragmentTransaction.replace(R.id.frameLayout, new GamesMainMenuFragment()).commit();
     }
 
     @Override
